@@ -1,0 +1,6 @@
+- [x] Criar layout `item_date.xml` para o seletor horizontal
+- [x] Atualizar `fragment_horarios.xml` com IDs e textos dinâmicos
+- [x] Criar classe `DateAdapter.java` para o RecyclerView de datas
+- [x] Implementar a lógica em `HorariosFragment.java` (gerar dias de Agosto 2026)
+- [x] Adicionar strings necessárias em `strings.xml`
+- [x] Validar build e visual

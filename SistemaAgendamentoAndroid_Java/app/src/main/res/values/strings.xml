@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Agenda Fácil</string>
+    <string name="ola_bem_vindo">Olá, Bem-vindo!</string>
+    <string name="confira_novidades">Confira as novidades de hoje</string>
+    <string name="resumo_geral">Resumo Geral</string>
+    <string name="carregando_informacoes">Carregando informações&#8230;</string>
+    <string name="menu_header">MENU</string>
+    <string name="nav_mais">Mais</string>
+    <string name="nav_inicio">Início</string>
+    <string name="nav_agenda">Agenda</string>
+    <string name="nav_clientes">Clientes</string>
+    <string name="meus_agendamentos">Meus Agendamentos</string>
+    <string name="novo_agendamento_btn">Novo Agendamento</string>
+    <string name="app_name_splash">AGENDA+</string>
+    <string name="tagline_splash">SEU TEMPO, ORGANIZADO</string>
+    <string name="carregando_sua_agenda">carregando sua agenda&#8230;</string>
+    <string name="titulo_horarios">Horários</string>
+    <string name="subtitulo_horarios">Selecione o melhor momento para você</string>
+    <string name="btn_confirmar_horario">Confirmar Horário</string>
+</resources>

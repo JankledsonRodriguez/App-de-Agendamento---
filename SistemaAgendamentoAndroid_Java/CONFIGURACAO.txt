@@ -1,0 +1,11 @@
+1. Abra o XAMPP.
+2. Inicie MySQL.
+3. Abra phpMyAdmin.
+4. Importe sql/agendamento.sql.
+5. Abra o projeto no Android Studio.
+6. Edite DatabaseConfig.java.
+7. Confira usuário, senha, IP e porta do MySQL.
+8. Sincronize o Gradle.
+9. Execute no emulador.
+
+No emulador Android, 10.0.2.2 aponta para o localhost do PC.

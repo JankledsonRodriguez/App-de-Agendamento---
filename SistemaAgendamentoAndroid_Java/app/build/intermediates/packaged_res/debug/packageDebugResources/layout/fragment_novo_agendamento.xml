@@ -1,0 +1,16 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="match_parent" android:layout_height="match_parent">
+ <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+  android:orientation="vertical" android:padding="20dp">
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+   android:text="Novo Agendamento" android:textSize="26sp" android:textStyle="bold"/>
+
+<EditText android:id="@+id/edtClienteId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="ID do cliente" android:inputType="number"/>
+<EditText android:id="@+id/edtData" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Data: AAAA-MM-DD" android:layout_marginTop="8dp"/>
+<EditText android:id="@+id/edtHora" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Hora: HH:MM" android:layout_marginTop="8dp"/>
+<EditText android:id="@+id/edtServico" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Serviço" android:layout_marginTop="8dp"/>
+<EditText android:id="@+id/edtObservacao" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Observação" android:layout_marginTop="8dp"/>
+<Button android:id="@+id/btnSalvarAgendamento" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="SALVAR" android:layout_marginTop="15dp"/>
+
+ </LinearLayout>
+</ScrollView>

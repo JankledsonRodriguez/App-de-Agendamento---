@@ -1,0 +1,43 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F7">
+
+ <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+  android:orientation="vertical" android:padding="24dp">
+
+  <com.google.android.material.card.MaterialCardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:cardCornerRadius="16dp"
+      app:cardElevation="0dp"
+      app:strokeWidth="0dp"
+      app:cardBackgroundColor="@android:color/transparent">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Serviços"
+        android:textColor="#1D1D1F"
+        android:textSize="32sp"
+        android:fontFamily="sans-serif-black" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gerencie seus cadastros e consultas de forma rápida e intuitiva."
+        android:textColor="#86868B"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        android:lineSpacingExtra="4dp"/>
+   </LinearLayout>
+  </com.google.android.material.card.MaterialCardView>
+
+ </LinearLayout>
+</ScrollView>

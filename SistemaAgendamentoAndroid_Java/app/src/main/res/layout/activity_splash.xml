@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splash_gradient">
+
+    <!-- Conteúdo central -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- Círculo glass com ícone -->
+        <FrameLayout
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:background="@drawable/bg_icon_circle"
+            android:elevation="8dp"
+            android:layout_marginBottom="28dp">
+
+            <ImageView
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_calendar_schedule"
+                android:contentDescription="@null" />
+        </FrameLayout>
+
+        <!-- Nome do app -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name_splash"
+            android:textSize="32sp"
+            android:fontFamily="sans-serif-black"
+            android:textColor="#FFFFFF"
+            android:letterSpacing="0.08" />
+
+        <!-- Tagline -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tagline_splash"
+            android:textSize="11sp"
+            android:textAllCaps="true"
+            android:textColor="#8B8FB8"
+            android:letterSpacing="0.2"
+            android:layout_marginTop="10dp" />
+
+        <!-- Linha decorativa fina -->
+        <View
+            android:layout_width="36dp"
+            android:layout_height="2dp"
+            android:background="#4CE0D2"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+    <!-- Loader inferior -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="56dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ProgressBar
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            style="?android:attr/progressBarStyleSmall"
+            android:indeterminateTint="#4CE0D2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/carregando_sua_agenda"
+            android:textSize="11sp"
+            android:textColor="#6A6E96"
+            android:layout_marginTop="12dp" />
+
+    </LinearLayout>
+
+</FrameLayout>
