@@ -3,6 +3,8 @@ package com.example.agendamento.repository;
 import com.example.agendamento.database.DatabaseManager;
 import com.example.agendamento.model.Agendamento;
 import com.example.agendamento.model.Cliente;
+import com.example.agendamento.model.Especialidade;
+import com.example.agendamento.model.Profissional;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -83,5 +85,38 @@ public class AgendamentoRepository {
         try(Connection c=DatabaseManager.getConnection();PreparedStatement p=c.prepareStatement("DELETE FROM agendamentos WHERE id=?")){
             p.setInt(1,id);return p.executeUpdate()==1;
         }
+    }
+
+    public List<Profissional> listarProfissionais() throws SQLException {
+        List<Profissional> lista = new ArrayList<>();
+        String sql = "SELECT id, nome, especialidade, telefone FROM profissionais ORDER BY nome";
+        try (Connection c = DatabaseManager.getConnection();
+             PreparedStatement p = c.prepareStatement(sql);
+             ResultSet r = p.executeQuery()) {
+            while (r.next()) lista.add(new Profissional(r.getInt("id"), r.getString("nome"),
+                    r.getString("especialidade"), r.getString("telefone")));
+        }
+        return lista;
+    }
+
+    public boolean inserirProfissional(String nome, String especialidade, String telefone) throws SQLException {
+        String sql = "INSERT INTO profissionais(nome, especialidade, telefone) VALUES(?,?,?)";
+        try (Connection c = DatabaseManager.getConnection(); PreparedStatement p = c.prepareStatement(sql)) {
+            p.setString(1, nome);
+            p.setString(2, especialidade);
+            p.setString(3, telefone);
+            return p.executeUpdate() == 1;
+        }
+    }
+
+    public List<Especialidade> listarEspecialidades() {
+        List<Especialidade> lista = new ArrayList<>();
+        lista.add(new Especialidade(1, "Cardiologia", "Saúde do Coração", android.R.drawable.ic_menu_myplaces));
+        lista.add(new Especialidade(2, "Dermatologia", "Pele e Estética", android.R.drawable.ic_menu_camera));
+        lista.add(new Especialidade(3, "Pediatria", "Saúde Infantil", android.R.drawable.ic_menu_edit));
+        lista.add(new Especialidade(4, "Ortopedia", "Ossos e Articulações", android.R.drawable.ic_menu_manage));
+        lista.add(new Especialidade(5, "Ginecologia", "Saúde da Mulher", android.R.drawable.ic_menu_agenda));
+        lista.add(new Especialidade(6, "Oftalmologia", "Visão e Olhos", android.R.drawable.ic_menu_view));
+        return lista;
     }
 }

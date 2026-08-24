@@ -93,7 +93,6 @@
             android:fontFamily="sans-serif-medium"
             android:layout_marginTop="48dp"
             app:cornerRadius="32dp"
-            android:elevation="4dp"
             app:icon="@android:drawable/ic_menu_save"
             app:iconGravity="textStart"/>
 

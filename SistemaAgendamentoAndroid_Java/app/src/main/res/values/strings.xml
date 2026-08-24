@@ -9,6 +9,7 @@
     <string name="nav_inicio">Início</string>
     <string name="nav_agenda">Agenda</string>
     <string name="nav_clientes">Clientes</string>
+    <string name="nav_especialidades">Especialidades</string>
     <string name="meus_agendamentos">Meus Agendamentos</string>
     <string name="novo_agendamento_btn">Novo Agendamento</string>
     <string name="app_name_splash">AGENDA+</string>

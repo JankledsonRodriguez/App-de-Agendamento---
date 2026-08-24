@@ -8,8 +8,12 @@
         "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_menu.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_clientes.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_clientes.xml"
+        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/item_especialidade.xml",
+        "source": "com.example.agendamento.app-main-35:/layout/item_especialidade.xml"
+    },
+    {
+        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_novo_agendamento.xml",
+        "source": "com.example.agendamento.app-main-35:/layout/fragment_novo_agendamento.xml"
     },
     {
         "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_agendamentos.xml",
@@ -36,6 +40,14 @@
         "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\item_date.xml"
     },
     {
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_novo_profissional.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_novo_profissional.xml"
+    },
+    {
+        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_servicos.xml",
+        "source": "com.example.agendamento.app-main-35:/layout/fragment_servicos.xml"
+    },
+    {
         "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_servicos.xml",
         "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_servicos.xml"
     },
@@ -44,16 +56,20 @@
         "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_clientes.xml",
-        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_clientes.xml"
-    },
-    {
         "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_configuracoes.xml",
         "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_configuracoes.xml"
     },
     {
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_clientes.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_clientes.xml"
+    },
+    {
         "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\activity_main.xml",
         "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_menu.xml",
+        "source": "com.example.agendamento.app-main-35:/layout/fragment_menu.xml"
     },
     {
         "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_novo_cliente.xml",

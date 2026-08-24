@@ -4,13 +4,13 @@ package com.example.agendamento.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ScrollView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.agendamento.R;
+import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -20,9 +20,10 @@ public final class FragmentConfiguracoesBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
-  public final Button btnSair;
+  public final MaterialButton btnSair;
 
-  private FragmentConfiguracoesBinding(@NonNull ScrollView rootView, @NonNull Button btnSair) {
+  private FragmentConfiguracoesBinding(@NonNull ScrollView rootView,
+      @NonNull MaterialButton btnSair) {
     this.rootView = rootView;
     this.btnSair = btnSair;
   }
@@ -55,7 +56,7 @@ public final class FragmentConfiguracoesBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btnSair;
-      Button btnSair = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnSair = ViewBindings.findChildViewById(rootView, id);
       if (btnSair == null) {
         break missingId;
       }

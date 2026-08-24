@@ -4,8 +4,8 @@ package com.example.agendamento.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.agendamento.R;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -22,7 +23,7 @@ public final class FragmentAgendamentosBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button btnNovoAgendamento;
+  public final ExtendedFloatingActionButton btnNovoAgendamento;
 
   @NonNull
   public final LinearLayout headerContainer;
@@ -30,13 +31,22 @@ public final class FragmentAgendamentosBinding implements ViewBinding {
   @NonNull
   public final RecyclerView recyclerAgendamentos;
 
+  @NonNull
+  public final TextView tvSubtitle;
+
+  @NonNull
+  public final TextView tvTitle;
+
   private FragmentAgendamentosBinding(@NonNull ConstraintLayout rootView,
-      @NonNull Button btnNovoAgendamento, @NonNull LinearLayout headerContainer,
-      @NonNull RecyclerView recyclerAgendamentos) {
+      @NonNull ExtendedFloatingActionButton btnNovoAgendamento,
+      @NonNull LinearLayout headerContainer, @NonNull RecyclerView recyclerAgendamentos,
+      @NonNull TextView tvSubtitle, @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.btnNovoAgendamento = btnNovoAgendamento;
     this.headerContainer = headerContainer;
     this.recyclerAgendamentos = recyclerAgendamentos;
+    this.tvSubtitle = tvSubtitle;
+    this.tvTitle = tvTitle;
   }
 
   @Override
@@ -67,7 +77,7 @@ public final class FragmentAgendamentosBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btnNovoAgendamento;
-      Button btnNovoAgendamento = ViewBindings.findChildViewById(rootView, id);
+      ExtendedFloatingActionButton btnNovoAgendamento = ViewBindings.findChildViewById(rootView, id);
       if (btnNovoAgendamento == null) {
         break missingId;
       }
@@ -84,8 +94,20 @@ public final class FragmentAgendamentosBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvSubtitle;
+      TextView tvSubtitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvSubtitle == null) {
+        break missingId;
+      }
+
+      id = R.id.tvTitle;
+      TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvTitle == null) {
+        break missingId;
+      }
+
       return new FragmentAgendamentosBinding((ConstraintLayout) rootView, btnNovoAgendamento,
-          headerContainer, recyclerAgendamentos);
+          headerContainer, recyclerAgendamentos, tvSubtitle, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

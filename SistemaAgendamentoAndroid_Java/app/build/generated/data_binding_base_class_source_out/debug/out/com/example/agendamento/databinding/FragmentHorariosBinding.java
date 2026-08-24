@@ -4,7 +4,6 @@ package com.example.agendamento.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.agendamento.R;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.ChipGroup;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -23,7 +23,7 @@ public final class FragmentHorariosBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button btnConfirmarHorario;
+  public final MaterialButton btnConfirmarHorario;
 
   @NonNull
   public final ChipGroup chipGroupHorarios;
@@ -38,7 +38,7 @@ public final class FragmentHorariosBinding implements ViewBinding {
   public final TextView txtMesAtual;
 
   private FragmentHorariosBinding(@NonNull ConstraintLayout rootView,
-      @NonNull Button btnConfirmarHorario, @NonNull ChipGroup chipGroupHorarios,
+      @NonNull MaterialButton btnConfirmarHorario, @NonNull ChipGroup chipGroupHorarios,
       @NonNull RecyclerView rvDates, @NonNull TextView txtDataSelecionada,
       @NonNull TextView txtMesAtual) {
     this.rootView = rootView;
@@ -77,7 +77,7 @@ public final class FragmentHorariosBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btnConfirmarHorario;
-      Button btnConfirmarHorario = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnConfirmarHorario = ViewBindings.findChildViewById(rootView, id);
       if (btnConfirmarHorario == null) {
         break missingId;
       }

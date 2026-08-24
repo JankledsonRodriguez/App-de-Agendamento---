@@ -4,25 +4,44 @@ package com.example.agendamento.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
 import com.example.agendamento.R;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
+import java.lang.String;
 
 public final class FragmentProfissionaisBinding implements ViewBinding {
   @NonNull
-  private final ScrollView rootView;
+  private final ConstraintLayout rootView;
 
-  private FragmentProfissionaisBinding(@NonNull ScrollView rootView) {
+  @NonNull
+  public final ExtendedFloatingActionButton btnNovoProfissional;
+
+  @NonNull
+  public final LinearLayout headerContainer;
+
+  @NonNull
+  public final RecyclerView recyclerProfissionais;
+
+  private FragmentProfissionaisBinding(@NonNull ConstraintLayout rootView,
+      @NonNull ExtendedFloatingActionButton btnNovoProfissional,
+      @NonNull LinearLayout headerContainer, @NonNull RecyclerView recyclerProfissionais) {
     this.rootView = rootView;
+    this.btnNovoProfissional = btnNovoProfissional;
+    this.headerContainer = headerContainer;
+    this.recyclerProfissionais = recyclerProfissionais;
   }
 
   @Override
   @NonNull
-  public ScrollView getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -43,10 +62,32 @@ public final class FragmentProfissionaisBinding implements ViewBinding {
 
   @NonNull
   public static FragmentProfissionaisBinding bind(@NonNull View rootView) {
-    if (rootView == null) {
-      throw new NullPointerException("rootView");
-    }
+    // The body of this method is generated in a way you would not otherwise write.
+    // This is done to optimize the compiled bytecode for size and performance.
+    int id;
+    missingId: {
+      id = R.id.btnNovoProfissional;
+      ExtendedFloatingActionButton btnNovoProfissional = ViewBindings.findChildViewById(rootView, id);
+      if (btnNovoProfissional == null) {
+        break missingId;
+      }
 
-    return new FragmentProfissionaisBinding((ScrollView) rootView);
+      id = R.id.headerContainer;
+      LinearLayout headerContainer = ViewBindings.findChildViewById(rootView, id);
+      if (headerContainer == null) {
+        break missingId;
+      }
+
+      id = R.id.recyclerProfissionais;
+      RecyclerView recyclerProfissionais = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerProfissionais == null) {
+        break missingId;
+      }
+
+      return new FragmentProfissionaisBinding((ConstraintLayout) rootView, btnNovoProfissional,
+          headerContainer, recyclerProfissionais);
+    }
+    String missingId = rootView.getResources().getResourceName(id);
+    throw new NullPointerException("Missing required view with ID: ".concat(missingId));
   }
 }

@@ -4,9 +4,9 @@ package com.example.agendamento.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.agendamento.R;
@@ -18,7 +18,7 @@ import java.lang.String;
 
 public final class ActivityLoginBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final MaterialButton btnLogin;
@@ -29,17 +29,22 @@ public final class ActivityLoginBinding implements ViewBinding {
   @NonNull
   public final TextInputEditText edtSenha;
 
-  private ActivityLoginBinding(@NonNull LinearLayout rootView, @NonNull MaterialButton btnLogin,
-      @NonNull TextInputEditText edtEmail, @NonNull TextInputEditText edtSenha) {
+  @NonNull
+  public final View topView;
+
+  private ActivityLoginBinding(@NonNull ConstraintLayout rootView, @NonNull MaterialButton btnLogin,
+      @NonNull TextInputEditText edtEmail, @NonNull TextInputEditText edtSenha,
+      @NonNull View topView) {
     this.rootView = rootView;
     this.btnLogin = btnLogin;
     this.edtEmail = edtEmail;
     this.edtSenha = edtSenha;
+    this.topView = topView;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -82,7 +87,14 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityLoginBinding((LinearLayout) rootView, btnLogin, edtEmail, edtSenha);
+      id = R.id.topView;
+      View topView = ViewBindings.findChildViewById(rootView, id);
+      if (topView == null) {
+        break missingId;
+      }
+
+      return new ActivityLoginBinding((ConstraintLayout) rootView, btnLogin, edtEmail, edtSenha,
+          topView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

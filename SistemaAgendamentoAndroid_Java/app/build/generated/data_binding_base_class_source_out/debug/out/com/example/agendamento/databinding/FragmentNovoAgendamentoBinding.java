@@ -4,14 +4,14 @@ package com.example.agendamento.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ScrollView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.agendamento.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -21,27 +21,27 @@ public final class FragmentNovoAgendamentoBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
-  public final Button btnSalvarAgendamento;
+  public final MaterialButton btnSalvarAgendamento;
 
   @NonNull
-  public final EditText edtClienteId;
+  public final TextInputEditText edtClienteId;
 
   @NonNull
-  public final EditText edtData;
+  public final TextInputEditText edtData;
 
   @NonNull
-  public final EditText edtHora;
+  public final TextInputEditText edtHora;
 
   @NonNull
-  public final EditText edtObservacao;
+  public final TextInputEditText edtObservacao;
 
   @NonNull
-  public final EditText edtServico;
+  public final TextInputEditText edtServico;
 
   private FragmentNovoAgendamentoBinding(@NonNull ScrollView rootView,
-      @NonNull Button btnSalvarAgendamento, @NonNull EditText edtClienteId,
-      @NonNull EditText edtData, @NonNull EditText edtHora, @NonNull EditText edtObservacao,
-      @NonNull EditText edtServico) {
+      @NonNull MaterialButton btnSalvarAgendamento, @NonNull TextInputEditText edtClienteId,
+      @NonNull TextInputEditText edtData, @NonNull TextInputEditText edtHora,
+      @NonNull TextInputEditText edtObservacao, @NonNull TextInputEditText edtServico) {
     this.rootView = rootView;
     this.btnSalvarAgendamento = btnSalvarAgendamento;
     this.edtClienteId = edtClienteId;
@@ -79,37 +79,37 @@ public final class FragmentNovoAgendamentoBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btnSalvarAgendamento;
-      Button btnSalvarAgendamento = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnSalvarAgendamento = ViewBindings.findChildViewById(rootView, id);
       if (btnSalvarAgendamento == null) {
         break missingId;
       }
 
       id = R.id.edtClienteId;
-      EditText edtClienteId = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtClienteId = ViewBindings.findChildViewById(rootView, id);
       if (edtClienteId == null) {
         break missingId;
       }
 
       id = R.id.edtData;
-      EditText edtData = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtData = ViewBindings.findChildViewById(rootView, id);
       if (edtData == null) {
         break missingId;
       }
 
       id = R.id.edtHora;
-      EditText edtHora = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtHora = ViewBindings.findChildViewById(rootView, id);
       if (edtHora == null) {
         break missingId;
       }
 
       id = R.id.edtObservacao;
-      EditText edtObservacao = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtObservacao = ViewBindings.findChildViewById(rootView, id);
       if (edtObservacao == null) {
         break missingId;
       }
 
       id = R.id.edtServico;
-      EditText edtServico = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtServico = ViewBindings.findChildViewById(rootView, id);
       if (edtServico == null) {
         break missingId;
       }

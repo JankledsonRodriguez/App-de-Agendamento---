@@ -1,9 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
- android:layout_width="match_parent" android:layout_height="match_parent">
- <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-  android:orientation="vertical" android:padding="20dp">
-  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-   android:text="Configurações" android:textSize="26sp" android:textStyle="bold"/>
-  <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Configurações do sistema." android:textSize="17sp" android:layout_marginTop="20dp"/><Button android:id="@+id/btnSair" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="SAIR" android:layout_marginTop="20dp"/>
- </LinearLayout>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Configurações"
+            android:textSize="34sp"
+            android:textColor="#1A1C1E"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="-0.04"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gerencie as preferências do seu sistema."
+            android:textSize="15sp"
+            android:textColor="#6C757D"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginBottom="40dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E9ECEF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <!-- Example Setting Row -->
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:text="Perfil da Conta"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textColor="#495057"
+                    android:gravity="start|center_vertical"
+                    app:icon="@android:drawable/ic_menu_myplaces"
+                    app:iconTint="#6C757D"
+                    app:iconPadding="16dp"/>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    app:dividerColor="#F1F3F5"/>
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:text="Notificações"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textColor="#495057"
+                    android:gravity="start|center_vertical"
+                    app:icon="@android:drawable/ic_popup_reminder"
+                    app:iconTint="#6C757D"
+                    app:iconPadding="16dp"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSair"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="40dp"
+            android:text="Encerrar Sessão"
+            android:textAllCaps="false"
+            android:textColor="#D32F2F"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-black"
+            app:cornerRadius="20dp"
+            app:icon="@android:drawable/ic_lock_power_off"
+            app:iconTint="#D32F2F"/>
+
+    </LinearLayout>
 </ScrollView>
