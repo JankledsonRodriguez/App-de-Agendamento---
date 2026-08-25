@@ -9,6 +9,12 @@ import com.google.android.material.navigationrail.NavigationRailView;
 public class MainActivity extends AppCompatActivity {
 
     @Override protected void onCreate(Bundle b) {
+        java.util.Locale locale = new java.util.Locale("pt", "BR");
+        java.util.Locale.setDefault(locale);
+        android.content.res.Configuration config = new android.content.res.Configuration();
+        config.setLocale(locale);
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
         super.onCreate(b);
         setContentView(R.layout.activity_main);
 
@@ -17,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         navRail.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.navInicio) abrir(new InicioFragment());
-            else if (id == R.id.navAgenda) abrir(new AgendamentosFragment());
-            else if (id == R.id.navClientes) abrir(new ClientesFragment());
+            else if (id == R.id.navAgenda) abrir(new ConsultasFragment());
+            else if (id == R.id.navClientes) abrir(new PacientesFragment());
             else if (id == R.id.navMenu) abrir(new MenuFragment());
             return true;
         });

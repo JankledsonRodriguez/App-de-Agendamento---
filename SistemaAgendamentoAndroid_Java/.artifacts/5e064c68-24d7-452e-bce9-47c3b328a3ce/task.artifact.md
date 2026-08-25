@@ -1,11 +1,11 @@
-# Tarefas: Estrutura de Especialidades Médicas
+# Tarefas: Reestruturação Total Clinique+
 
-- [x] Atualizar `strings.xml` com termos médicos
-- [x] Criar modelo `Especialidade.java`
-- [x] Criar layout de item `item_especialidade.xml` (Grid Design)
-- [x] Atualizar layout `fragment_servicos.xml` para Especialidades
-- [x] Implementar `EspecialidadeAdapter.java`
-- [x] Renomear e atualizar `ServicosFragment.java` para `EspecialidadesFragment.java`
-- [x] Atualizar navegação no `MenuFragment.java`
-- [x] Adicionar dados fictícios de especialidades no Repositório
-- [x] Validar visual e gerar Walkthrough
+- [x] Refatorar Modelos (`Paciente`, `Consulta`, `Medico`)
+- [x] Refatorar Repositório (`ClinicaRepository`)
+- [x] Renomear e atualizar Fragmentos de UI:
+    - [x] `ConsultasFragment` e `NovaConsultaFragment`
+    - [x] `CorpoClinicoFragment` e `NovoMedicoFragment`
+    - [x] `EspecialidadesFragment`
+- [x] Renomear Arquivos de Layout (XML)
+- [x] Atualizar Navegação Principal (`MainActivity`, `MenuFragment`, `InicioFragment`)
+- [x] Validar compilação e integridade de dados

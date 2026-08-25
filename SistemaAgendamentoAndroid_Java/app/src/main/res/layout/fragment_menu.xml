@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="Menu"
+            android:text="Gestão Clínica"
             android:textSize="34sp"
             android:textColor="#1A1C1E"
             android:fontFamily="sans-serif-black"
@@ -28,11 +28,13 @@
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginBottom="16dp"
-            android:text="Especialidades"
+            android:text="Especialidades Médicas"
             android:textAllCaps="false"
             android:textSize="16sp"
             android:fontFamily="sans-serif-medium"
-            app:cornerRadius="20dp" />
+            app:cornerRadius="20dp"
+            app:icon="@android:drawable/ic_menu_agenda"
+            app:iconGravity="textStart"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnProfissionais"
@@ -40,11 +42,13 @@
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginBottom="16dp"
-            android:text="Profissionais"
+            android:text="Corpo Clínico"
             android:textAllCaps="false"
             android:textSize="16sp"
             android:fontFamily="sans-serif-medium"
-            app:cornerRadius="20dp" />
+            app:cornerRadius="20dp"
+            app:icon="@android:drawable/ic_menu_myplaces"
+            app:iconGravity="textStart"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnHorarios"
@@ -52,11 +56,13 @@
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginBottom="16dp"
-            android:text="Horários"
+            android:text="Agenda Médica"
             android:textAllCaps="false"
             android:textSize="16sp"
             android:fontFamily="sans-serif-medium"
-            app:cornerRadius="20dp" />
+            app:cornerRadius="20dp"
+            app:icon="@android:drawable/ic_menu_today"
+            app:iconGravity="textStart"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRelatorios"
@@ -64,17 +70,19 @@
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginBottom="32dp"
-            android:text="Relatórios"
+            android:text="Faturamento e Relatórios"
             android:textAllCaps="false"
             android:textSize="16sp"
             android:fontFamily="sans-serif-medium"
             app:cornerRadius="20dp"
-            app:strokeWidth="1.5dp" />
+            app:strokeWidth="1.5dp"
+            app:icon="@android:drawable/ic_menu_sort_by_size"
+            app:iconGravity="textStart"/>
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginVertical="16dp"
             app:dividerColor="#E9ECEF"/>
 
         <com.google.android.material.button.MaterialButton
@@ -82,7 +90,7 @@
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="Configurações"
+            android:text="Configurações da Clínica"
             android:textAllCaps="false"
             android:textColor="#6C757D"
             android:textSize="15sp"

@@ -1,49 +1,42 @@
-# Plano de Implementação: Especialidades Médicas
+# Plano de Reestruturação Completa: Domínio de Clínica Médica (Clinique+)
 
-Transformar a seção de "Serviços" em uma estrutura moderna e sofisticada de "Especialidades Médicas", adaptando o layout, a navegação e a persistência para o domínio de consultas médicas.
+Este plano detalha a refatoração total do código-fonte e dos recursos para consolidar a transição de um sistema genérico de agendamento para um sistema especializado de **Gestão de Clínica Médica**.
 
 ## User Review Required
 
 > [!IMPORTANT]
-> Vou renomear a seção de "Serviços" para "Especialidades" em todo o app. Isso inclui a troca de nomes em arquivos, layouts e no Menu principal.
+> Realizaremos uma refatoração em larga escala renomeando classes, arquivos Java e arquivos XML. Isso tornará o código muito mais legível e profissional. Embora a lógica de banco de dados (MySQL) permaneça a mesma para evitar migrações de esquema, os nomes no código refletirão o novo domínio médico.
 
 ## Proposed Changes
 
-### [Nomenclatura e Navegação]
+### 1. Modelos (Models)
+Substituição de nomes genéricos por termos clínicos:
+- `Cliente.java` -> `Paciente.java`
+- `Agendamento.java` -> `Consulta.java`
+- `Profissional.java` -> `Medico.java`
 
-#### [MODIFY] [strings.xml](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/res/values/strings.xml)
-- Alterar "Serviços" para "Especialidades".
+### 2. Repositório (Repository)
+- `AgendamentoRepository.java` -> `ClinicaRepository.java`
+- Atualização interna dos métodos (ex: `listarClientes()` -> `listarPacientes()`).
 
-#### [MODIFY] [MenuFragment.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/ui/MenuFragment.java)
-- Atualizar a navegação do botão `btnServicos` para abrir o novo `EspecialidadesFragment`.
+### 3. Interface do Usuário (UI) - Fragmentos
+Renomeação de todos os fragmentos e seus respectivos layouts para consistência:
+- `AgendamentosFragment` -> `ConsultasFragment` (`fragment_consultas.xml`)
+- `NovoAgendamentoFragment` -> `NovaConsultaFragment` (`fragment_nova_consulta.xml`)
+- `ProfissionaisFragment` -> `CorpoClinicoFragment` (`fragment_corpo_clinico.xml`)
+- `NovoProfissionalFragment` -> `NovoMedicoFragment` (`fragment_novo_medico.xml`)
+- `ServicosFragment` -> `EspecialidadesFragment` (`fragment_especialidades.xml`)
 
----
-
-### [Model e Repositório]
-
-#### [NEW] [Especialidade.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/model/Especialidade.java)
-- Classe com `id`, `nome`, `descricao` e `iconeResId`.
-
-#### [MODIFY] [AgendamentoRepository.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/repository/AgendamentoRepository.java)
-- Adicionar método para listar as especialidades médicas (ex: Cardiologia, Pediatria, Dermatologia, etc.).
-
----
-
-### [Layouts e UI]
-
-#### [NEW] [item_especialidade.xml](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/res/layout/item_especialidade.xml)
-- Layout moderno com um Card, ícone circular sofisticado e título da especialidade.
-
-#### [MODIFY] [fragment_especialidades.xml](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/res/layout/fragment_servicos.xml)
-- Ajustar o título para "Especialidades Médicas".
-- Configurar o RecyclerView para exibir os itens em uma grade (Grid) para um visual mais sofisticado.
-
-#### [NEW] [EspecialidadeAdapter.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/ui/EspecialidadeAdapter.java)
-- Adaptador customizado para exibir as especialidades com ícones e cores variadas.
+### 4. Navegação e IDs
+- Atualização da `MainActivity.java` e `MenuFragment.java` para refletir os novos nomes de classe.
+- Padronização de IDs dentro dos XMLs (ex: `recyclerAgendamentos` -> `recyclerConsultas`).
 
 ## Verification Plan
 
+### Automated Verification
+- Executar `gradle build` para garantir que todas as referências cruzadas e imports foram corrigidos.
+
 ### Manual Verification
-1. Abrir o menu e clicar em "Especialidades".
-2. Verificar se a grade de especialidades (Cardiologia, etc.) é exibida com o design moderno.
-3. Garantir que o visual esteja sofisticado e alinhado com o restante do app.
+1. Abrir o app e navegar por todas as seções (Painel, Pacientes, Consultas, Corpo Clínico, Especialidades).
+2. Tentar cadastrar um novo Paciente e uma nova Consulta para validar a persistência.
+3. Verificar se as telas carregam sem o erro de "Cannot resolve symbol".

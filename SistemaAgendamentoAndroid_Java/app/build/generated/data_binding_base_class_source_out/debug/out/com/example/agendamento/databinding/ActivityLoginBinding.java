@@ -4,6 +4,7 @@ package com.example.agendamento.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -32,14 +33,18 @@ public final class ActivityLoginBinding implements ViewBinding {
   @NonNull
   public final View topView;
 
+  @NonNull
+  public final TextView txtEsqueceuSenha;
+
   private ActivityLoginBinding(@NonNull ConstraintLayout rootView, @NonNull MaterialButton btnLogin,
       @NonNull TextInputEditText edtEmail, @NonNull TextInputEditText edtSenha,
-      @NonNull View topView) {
+      @NonNull View topView, @NonNull TextView txtEsqueceuSenha) {
     this.rootView = rootView;
     this.btnLogin = btnLogin;
     this.edtEmail = edtEmail;
     this.edtSenha = edtSenha;
     this.topView = topView;
+    this.txtEsqueceuSenha = txtEsqueceuSenha;
   }
 
   @Override
@@ -93,8 +98,14 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.txtEsqueceuSenha;
+      TextView txtEsqueceuSenha = ViewBindings.findChildViewById(rootView, id);
+      if (txtEsqueceuSenha == null) {
+        break missingId;
+      }
+
       return new ActivityLoginBinding((ConstraintLayout) rootView, btnLogin, edtEmail, edtSenha,
-          topView);
+          topView, txtEsqueceuSenha);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

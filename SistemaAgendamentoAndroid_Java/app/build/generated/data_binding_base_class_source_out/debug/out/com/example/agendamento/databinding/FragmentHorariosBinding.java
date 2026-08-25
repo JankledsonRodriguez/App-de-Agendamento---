@@ -4,11 +4,11 @@ package com.example.agendamento.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.agendamento.R;
@@ -26,27 +26,22 @@ public final class FragmentHorariosBinding implements ViewBinding {
   public final MaterialButton btnConfirmarHorario;
 
   @NonNull
-  public final ChipGroup chipGroupHorarios;
+  public final CalendarView calendarView;
 
   @NonNull
-  public final RecyclerView rvDates;
+  public final ChipGroup chipGroupHorarios;
 
   @NonNull
   public final TextView txtDataSelecionada;
 
-  @NonNull
-  public final TextView txtMesAtual;
-
   private FragmentHorariosBinding(@NonNull ConstraintLayout rootView,
-      @NonNull MaterialButton btnConfirmarHorario, @NonNull ChipGroup chipGroupHorarios,
-      @NonNull RecyclerView rvDates, @NonNull TextView txtDataSelecionada,
-      @NonNull TextView txtMesAtual) {
+      @NonNull MaterialButton btnConfirmarHorario, @NonNull CalendarView calendarView,
+      @NonNull ChipGroup chipGroupHorarios, @NonNull TextView txtDataSelecionada) {
     this.rootView = rootView;
     this.btnConfirmarHorario = btnConfirmarHorario;
+    this.calendarView = calendarView;
     this.chipGroupHorarios = chipGroupHorarios;
-    this.rvDates = rvDates;
     this.txtDataSelecionada = txtDataSelecionada;
-    this.txtMesAtual = txtMesAtual;
   }
 
   @Override
@@ -82,15 +77,15 @@ public final class FragmentHorariosBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.chipGroupHorarios;
-      ChipGroup chipGroupHorarios = ViewBindings.findChildViewById(rootView, id);
-      if (chipGroupHorarios == null) {
+      id = R.id.calendarView;
+      CalendarView calendarView = ViewBindings.findChildViewById(rootView, id);
+      if (calendarView == null) {
         break missingId;
       }
 
-      id = R.id.rvDates;
-      RecyclerView rvDates = ViewBindings.findChildViewById(rootView, id);
-      if (rvDates == null) {
+      id = R.id.chipGroupHorarios;
+      ChipGroup chipGroupHorarios = ViewBindings.findChildViewById(rootView, id);
+      if (chipGroupHorarios == null) {
         break missingId;
       }
 
@@ -100,14 +95,8 @@ public final class FragmentHorariosBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.txtMesAtual;
-      TextView txtMesAtual = ViewBindings.findChildViewById(rootView, id);
-      if (txtMesAtual == null) {
-        break missingId;
-      }
-
       return new FragmentHorariosBinding((ConstraintLayout) rootView, btnConfirmarHorario,
-          chipGroupHorarios, rvDates, txtDataSelecionada, txtMesAtual);
+          calendarView, chipGroupHorarios, txtDataSelecionada);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

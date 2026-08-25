@@ -8,6 +8,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.agendamento.R;
@@ -20,10 +21,24 @@ public final class FragmentInicioBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
+  public final RecyclerView recyclerViewPacientes;
+
+  @NonNull
+  public final TextView txtProximoHorario;
+
+  @NonNull
+  public final TextView txtQtdPacientes;
+
+  @NonNull
   public final TextView txtResumo;
 
-  private FragmentInicioBinding(@NonNull ScrollView rootView, @NonNull TextView txtResumo) {
+  private FragmentInicioBinding(@NonNull ScrollView rootView,
+      @NonNull RecyclerView recyclerViewPacientes, @NonNull TextView txtProximoHorario,
+      @NonNull TextView txtQtdPacientes, @NonNull TextView txtResumo) {
     this.rootView = rootView;
+    this.recyclerViewPacientes = recyclerViewPacientes;
+    this.txtProximoHorario = txtProximoHorario;
+    this.txtQtdPacientes = txtQtdPacientes;
     this.txtResumo = txtResumo;
   }
 
@@ -54,13 +69,32 @@ public final class FragmentInicioBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.recyclerViewPacientes;
+      RecyclerView recyclerViewPacientes = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerViewPacientes == null) {
+        break missingId;
+      }
+
+      id = R.id.txtProximoHorario;
+      TextView txtProximoHorario = ViewBindings.findChildViewById(rootView, id);
+      if (txtProximoHorario == null) {
+        break missingId;
+      }
+
+      id = R.id.txtQtdPacientes;
+      TextView txtQtdPacientes = ViewBindings.findChildViewById(rootView, id);
+      if (txtQtdPacientes == null) {
+        break missingId;
+      }
+
       id = R.id.txtResumo;
       TextView txtResumo = ViewBindings.findChildViewById(rootView, id);
       if (txtResumo == null) {
         break missingId;
       }
 
-      return new FragmentInicioBinding((ScrollView) rootView, txtResumo);
+      return new FragmentInicioBinding((ScrollView) rootView, recyclerViewPacientes,
+          txtProximoHorario, txtQtdPacientes, txtResumo);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
