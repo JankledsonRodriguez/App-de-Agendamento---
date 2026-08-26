@@ -80,6 +80,43 @@ public class ClinicaRepository {
         }
     }
 
+    public boolean autocadastroMedico(String nome, String email, String especialidade, String crm, String senha) throws SQLException {
+        Connection c = null;
+        try {
+            c = DatabaseManager.getConnection();
+            c.setAutoCommit(false); // Iniciar transação
+
+            // 1. Inserir em usuarios (para login)
+            String sqlUser = "INSERT INTO usuarios(nome, email, senha) VALUES(?,?,?)";
+            try (PreparedStatement p1 = c.prepareStatement(sqlUser)) {
+                p1.setString(1, nome);
+                p1.setString(2, email);
+                p1.setString(3, senha);
+                p1.executeUpdate();
+            }
+
+            // 2. Inserir em medicos (perfil profissional)
+            String sqlMedico = "INSERT INTO medicos(nome, especialidade, crm) VALUES(?,?,?)";
+            try (PreparedStatement p2 = c.prepareStatement(sqlMedico)) {
+                p2.setString(1, nome);
+                p2.setString(2, especialidade);
+                p2.setString(3, crm);
+                p2.executeUpdate();
+            }
+
+            c.commit(); // Confirmar tudo
+            return true;
+        } catch (SQLException e) {
+            if (c != null) c.rollback();
+            throw e;
+        } finally {
+            if (c != null) {
+                c.setAutoCommit(true);
+                c.close();
+            }
+        }
+    }
+
     public List<Especialidade> listarEspecialidades() {
         List<Especialidade> lista = new ArrayList<>();
         lista.add(new Especialidade(1, "Cardiologia", "Saúde do Coração", android.R.drawable.ic_menu_myplaces));

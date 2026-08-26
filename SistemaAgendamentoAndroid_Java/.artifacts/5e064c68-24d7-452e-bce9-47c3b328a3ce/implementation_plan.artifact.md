@@ -1,68 +1,49 @@
-# Plano de Refatoração de Banco de Dados e Repositório (Clinique+)
+# Plano de Implementação: Autocadastro de Médicos
 
-Este plano visa unificar toda a camada de dados para o domínio clínico, renomeando tabelas e colunas no SQL e no Repositório para eliminar de vez termos genéricos como "clientes" e "agendamentos".
+Este plano visa criar o fluxo de autocadastro para médicos diretamente a partir da tela de login, garantindo que novos profissionais possam se registrar no sistema **Clinique+**.
 
 ## User Review Required
 
 > [!IMPORTANT]
-> Esta alteração modificará as strings SQL no código. Para que o aplicativo continue funcionando, o banco de dados MySQL precisará ser atualizado com os novos nomes de tabela e coluna. Vou fornecer o script SQL atualizado.
+> Vou adicionar um novo botão "Não tem conta? Cadastre-se" na tela de login. Ao clicar, o médico será direcionado para uma nova tela de cadastro (`CadastroMedicoActivity`).
 
 ## Proposed Changes
 
-### [Repositório e SQL]
+### [Layouts]
 
-#### [MODIFY] [ClinicaRepository.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/repository/ClinicaRepository.java)
-- Renomear tabelas SQL: `clientes` -> `pacientes`, `agendamentos` -> `consultas`.
-- Renomear colunas SQL: `cliente_id` -> `paciente_id`, `cliente_nome` -> `paciente_nome`.
-- Ajustar métodos para usar o termo `CRM` ou `registro` em vez de `telefone` para os médicos.
+#### [MODIFY] [activity_login.xml](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/res/layout/activity_login.xml)
+- Adicionar um botão ou TextView clicável: "Não tem conta? Cadastre-se".
 
-#### [MODIFY] [agendamento.sql](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/sql/agendamento.sql)
-- Atualizar o script de criação do banco para refletir a nova nomenclatura:
-    - Tabela `clientes` passa a ser `pacientes`.
-    - Tabela `agendamentos` passa a ser `consultas`.
-    - Coluna `cliente_id` passa a ser `paciente_id`.
-    - Tabela `profissionais` pode ser renomeada para `medicos` para maior sofisticação.
-
-### [Modelos]
-
-#### [MODIFY] [Medico.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/model/Medico.java)
-- Garantir que o campo seja `registroCRM` e não `telefone`.
+#### [NEW] [activity_cadastro_medico.xml](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/res/layout/activity_cadastro_medico.xml)
+- Criar a tela de cadastro com o visual premium do app:
+    - Campo: Nome Completo.
+    - Campo: E-mail (Institucional).
+    - Campo: Especialidade Médica.
+    - Campo: CRM / Registro Profissional.
+    - Campo: Senha de Acesso.
+    - Botão: "Finalizar Cadastro".
 
 ---
 
-## Script SQL Sugerido (Consolidado)
+### [Lógica (Java)]
 
-```sql
--- Criar tabelas com nomes clínicos
-CREATE TABLE pacientes(
- id INT AUTO_INCREMENT PRIMARY KEY,
- nome VARCHAR(120) NOT NULL,
- telefone VARCHAR(30) NOT NULL,
- email VARCHAR(120)
-);
+#### [MODIFY] [LoginActivity.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/LoginActivity.java)
+- Implementar a navegação para a `CadastroMedicoActivity`.
 
-CREATE TABLE medicos(
- id INT AUTO_INCREMENT PRIMARY KEY,
- nome VARCHAR(120) NOT NULL,
- especialidade VARCHAR(100),
- crm VARCHAR(30)
-);
+#### [NEW] [CadastroMedicoActivity.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/CadastroMedicoActivity.java)
+- Lógica para capturar os dados e salvar no banco de dados.
+- *Nota:* O cadastro inserirá os dados nas tabelas `usuarios` (para login) e `medicos` (para perfil profissional).
 
-CREATE TABLE consultas(
- id INT AUTO_INCREMENT PRIMARY KEY,
- paciente_id INT NOT NULL,
- data DATE NOT NULL,
- hora TIME NOT NULL,
- especialidade VARCHAR(120) NOT NULL,
- observacao TEXT,
- status VARCHAR(30) DEFAULT 'AGENDADO',
- FOREIGN KEY(paciente_id) REFERENCES pacientes(id)
-);
-```
+#### [MODIFY] [ClinicaRepository.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/repository/ClinicaRepository.java)
+- Adicionar método `autocadastroMedico(nome, email, especialidade, crm, senha)` que realiza as duas inserções em uma transação.
+
+#### [MODIFY] [AndroidManifest.xml](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/AndroidManifest.xml)
+- Registrar a nova Activity.
 
 ## Verification Plan
 
 ### Manual Verification
-1. Executar o Build do projeto.
-2. Fornecer ao usuário o script SQL para atualização do banco MySQL local.
-3. Verificar no código Java se não restou nenhuma menção a `cliente_id` ou tabelas antigas.
+1. Abrir a tela de Login e verificar o novo botão de cadastro.
+2. Clicar no botão e validar se a tela de Cadastro de Médico abre com o visual correto.
+3. Preencher todos os campos e realizar o cadastro.
+4. Tentar fazer login com as novas credenciais criadas.

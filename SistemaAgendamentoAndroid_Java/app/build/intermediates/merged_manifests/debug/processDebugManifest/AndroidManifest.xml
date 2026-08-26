@@ -36,6 +36,9 @@
             android:name="com.example.agendamento.ForgotPasswordActivity"
             android:exported="false" />
         <activity
+            android:name="com.example.agendamento.CadastroMedicoActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.agendamento.SplashActivity"
             android:exported="true" >
             <intent-filter>

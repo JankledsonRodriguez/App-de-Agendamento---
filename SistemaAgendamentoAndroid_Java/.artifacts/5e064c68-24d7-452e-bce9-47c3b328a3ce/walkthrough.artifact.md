@@ -1,39 +1,38 @@
-# Walkthrough - Refatoração Completa do Banco de Dados (Clinique+)
+# Walkthrough - Autocadastro de Médicos no Clinique+
 
-Finalizamos a transição total da camada de dados para o domínio clínico. Agora, tanto o código Java quanto o banco de dados MySQL estão em perfeita harmonia com os termos **Pacientes**, **Consultas** e **Médicos**.
+Implementamos o fluxo completo de autocadastro para que novos médicos possam se registrar no sistema diretamente pela tela de login, mantendo a identidade visual premium e a integridade dos dados.
 
-## O que foi realizado
+## O que foi implementado
 
-### 1. Limpeza do Repositório (`ClinicaRepository.java`)
-- Atualizamos todas as instruções SQL para utilizar os novos nomes de tabelas e colunas:
-    - `clientes` → `pacientes`
-    - `agendamentos` → `consultas`
-    - `profissionais` → `medicos`
-    - `cliente_id` → `paciente_id`
-- Padronizamos os métodos para utilizarem os novos modelos de dados (`Paciente`, `Consulta`, `Medico`).
+### 1. Novo Ponto de Entrada no Login
+- Adicionamos o botão **"Não tem conta? Cadastre-se"** logo abaixo das opções de acesso.
+- Configuramos a navegação para abrir a nova tela de cadastro médico.
 
-### 2. Atualização do Script SQL (`agendamento.sql`)
-- Criamos um novo script de criação do banco de dados que reflete a estrutura clínica moderna.
-- Adicionamos campos específicos como `crm` para médicos e renomeamos as chaves estrangeiras para `paciente_id`.
+### 2. Tela de Cadastro de Médicos (`Clinique+ Style`)
+- Criamos a `activity_cadastro_medico.xml` com um formulário completo e sofisticado:
+    - **Dados Pessoais:** Nome completo e E-mail Institucional.
+    - **Dados Profissionais:** Especialidade Médica e CRM/Registro.
+    - **Segurança:** Definição de senha com suporte a visualização (toggle).
+    - **Visual:** Card centralizado com cantos arredondados (`24dp`) sobre fundo institucional azul.
 
-### 3. Consistência de Modelos
-- O modelo `Medico.java` agora está perfeitamente sincronizado com o campo `crm` do banco de dados, garantindo que o registro profissional seja armazenado corretamente.
+### 3. Lógica de Autocadastro (Transação Segura)
+- **`CadastroMedicoActivity.java`:** Gerencia a captura dos dados e valida se todos os campos foram preenchidos.
+- **`ClinicaRepository.java`:** Criamos o método `autocadastroMedico`. Ele utiliza uma **transação SQL** para garantir que o médico seja cadastrado corretamente em duas tabelas ao mesmo tempo:
+    - `usuarios`: Para permitir que ele faça login no sistema.
+    - `medicos`: Para manter seu perfil profissional completo.
 
-## Como Atualizar seu Banco de Dados (MySQL)
+## Detalhes Técnicos
+- **Activity:** `CadastroMedicoActivity` registrada no `AndroidManifest.xml`.
+- **Integridade:** O uso de `setAutoCommit(false)` no repositório garante que, se houver falha em qualquer parte do cadastro, nada seja salvo pela metade, evitando dados "órfãos".
 
-> [!CAUTION]
-> **Atenção:** As alterações no código Java exigem que o banco de dados também seja renomeado. Se você já possui dados, será necessário renomear as tabelas manualmente ou rodar o novo script.
+## Como Testar
+1. Na tela de **Login**, clique em **"Cadastre-se"**.
+2. Preencha o formulário com os dados do novo médico.
+3. Clique em **"Finalizar Cadastro"**.
+4. O sistema retornará à tela de login e você já poderá acessar com o e-mail e senha recém-criados.
 
-Use o script localizado em [agendamento.sql](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/sql/agendamento.sql) para recriar o banco com a estrutura correta:
-
-1. Abra seu gerenciador MySQL (Workbench, PHPMyAdmin, etc.).
-2. Execute o conteúdo de `agendamento.sql`.
-3. Isso garantirá que o app consiga inserir e listar os dados sem erros de "Table not found".
-
-## Resultado Final
-- **Código:** 100% Clínico e Profissional.
-- **Estrutura:** Seguindo as melhores práticas de nomenclatura.
-- **Integridade:** Build realizado com sucesso.
+> [!TIP]
+> O design utiliza `TextInputLayout` com ícones dinâmicos, proporcionando uma experiência de preenchimento rápida e intuitiva.
 
 > [!SUCCESS]
-> O sistema **Clinique+** agora possui uma base sólida e escalável para a gestão de qualquer clínica médica.
+> **Build Status:** Sucedido. O fluxo de registro está totalmente operacional e integrado ao banco de dados MySQL.

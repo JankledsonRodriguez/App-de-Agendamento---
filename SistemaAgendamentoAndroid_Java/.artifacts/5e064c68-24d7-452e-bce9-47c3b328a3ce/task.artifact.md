@@ -1,6 +1,9 @@
-# Tarefas: Refatoração Clínica de Dados (SQL & Repository)
+# Tarefas: Autocadastro de Médicos
 
-- [x] Atualizar `ClinicaRepository.java` (Queries com nomes clínicos)
-- [x] Atualizar `agendamento.sql` (Script de criação unificado)
-- [x] Validar integridade do modelo `Medico.java`
-- [x] Gerar Walkthrough final com orientações para o banco de dados
+- [x] Adicionar botão de cadastro em `activity_login.xml`
+- [x] Criar layout `activity_cadastro_medico.xml` (Design Clinique+)
+- [x] Implementar `CadastroMedicoActivity.java`
+- [x] Adicionar lógica de autocadastro em `ClinicaRepository.java`
+- [x] Registrar nova Activity no `AndroidManifest.xml`
+- [x] Configurar navegação no `LoginActivity.java`
+- [x] Validar fluxo e gerar Walkthrough

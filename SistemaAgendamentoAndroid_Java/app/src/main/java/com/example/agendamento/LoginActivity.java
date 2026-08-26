@@ -27,5 +27,9 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.txtEsqueceuSenha).setOnClickListener(v -> 
             startActivity(new Intent(this, ForgotPasswordActivity.class))
         );
+
+        findViewById(R.id.btnIrParaCadastro).setOnClickListener(v -> 
+            startActivity(new Intent(this, CadastroMedicoActivity.class))
+        );
     }
 }
