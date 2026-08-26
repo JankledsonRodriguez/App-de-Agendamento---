@@ -34,8 +34,8 @@
 22-->[androidx.core:core:1.13.0] C:\Users\jankledson59266826\.gradle\caches\9.3.0\transforms\8edef67774f1d997ee6bb7fa4fafd8db\workspace\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
 23        android:debuggable="true"
 24        android:extractNativeLibs="false"
-25        android:label="Agenda Fácil"
-25-->C:\Users\jankledson59266826\AndroidStudioProjects\App-de-Agendamento---\SistemaAgendamentoAndroid_Java\app\src\main\AndroidManifest.xml:6:9-37
+25        android:label="@string/app_name"
+25-->C:\Users\jankledson59266826\AndroidStudioProjects\App-de-Agendamento---\SistemaAgendamentoAndroid_Java\app\src\main\AndroidManifest.xml:6:9-41
 26        android:supportsRtl="true"
 26-->C:\Users\jankledson59266826\AndroidStudioProjects\App-de-Agendamento---\SistemaAgendamentoAndroid_Java\app\src\main\AndroidManifest.xml:7:9-35
 27        android:testOnly="true"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardDate"
     android:layout_width="64dp"
     android:layout_height="80dp"
@@ -20,7 +21,7 @@
             android:id="@+id/txtDayAbbrev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TER"
+            tools:text="TER"
             android:textColor="#6C757D"
             android:textSize="12sp"
             android:textAllCaps="true" />
@@ -29,7 +30,7 @@
             android:id="@+id/txtDayNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="18"
+            tools:text="18"
             android:textColor="#212529"
             android:textSize="20sp"
             android:textStyle="bold"

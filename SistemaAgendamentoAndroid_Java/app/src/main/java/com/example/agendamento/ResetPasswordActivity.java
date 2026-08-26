@@ -39,8 +39,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 // Avançar para Step 2
                 layoutStep1.setVisibility(View.GONE);
                 layoutStep2.setVisibility(View.VISIBLE);
-                txtTitle.setText("Nova Senha");
-                txtSubtitle.setText("Crie uma senha forte e segura para o seu acesso médico.");
+                txtTitle.setText(R.string.nova_senha);
+                txtSubtitle.setText(R.string.msg_senha_forte);
             } else {
                 Toast.makeText(this, "Código incorreto. Tente novamente.", Toast.LENGTH_SHORT).show();
             }

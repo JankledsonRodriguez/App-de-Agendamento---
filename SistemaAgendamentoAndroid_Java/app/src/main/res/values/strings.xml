@@ -13,9 +13,87 @@
     <string name="meus_agendamentos">Minhas Consultas</string>
     <string name="novo_agendamento_btn">Nova Consulta</string>
     <string name="app_name_splash">CLINIQUE+</string>
-    <string name="tagline_splash">SUA SAÚDE, ORGANIZADA</string>
+    <string name="tagline_splash">SUA SAÚDE, EM BOAS MÃOS</string>
     <string name="carregando_sua_agenda">preparando seu prontuário&#8230;</string>
     <string name="titulo_horarios">Horários Disponíveis</string>
     <string name="subtitulo_horarios">Selecione o melhor horário para seu atendimento</string>
     <string name="btn_confirmar_horario">Confirmar Agendamento</string>
+
+    <!-- Login & Cadastro -->
+    <string name="portal_medico">Portal do Colaborador Médico</string>
+    <string name="acessar_sistema">ACESSAR SISTEMA</string>
+    <string name="esqueceu_senha">Esqueceu a senha?</string>
+    <string name="nao_tem_conta">Não tem conta? Cadastre-se</string>
+    <string name="email_institucional">E-mail Institucional</string>
+    <string name="senha_acesso">Senha de Acesso</string>
+    <string name="novo_medico">Novo Médico</string>
+    <string name="crie_sua_conta">Crie sua conta no Clinique+</string>
+    <string name="nome_completo">Nome Completo</string>
+    <string name="especialidade_medica">Especialidade Médica</string>
+    <string name="crm_registro">CRM / Registro</string>
+    <string name="defina_senha">Defina uma Senha</string>
+    <string name="finalizar_cadastro">FINALIZAR CADASTRO</string>
+    <string name="ja_tem_conta">Já tem conta? Faça Login</string>
+
+    <!-- Recuperação de Senha -->
+    <string name="recuperacao">Recuperação</string>
+    <string name="instrucoes_recuperacao">Insira seu e-mail institucional para receber as instruções de redefinição.</string>
+    <string name="enviar_instrucoes">ENVIAR INSTRUÇÕES</string>
+    <string name="voltar_login">Voltar para o Login</string>
+    <string name="verificacao">Verificação</string>
+    <string name="insira_codigo">Insira o código de 6 dígitos enviado para o seu e-mail institucional.</string>
+    <string name="codigo_6_digitos">Código de 6 dígitos</string>
+    <string name="verificar_codigo">VERIFICAR CÓDIGO</string>
+    <string name="nova_senha">Nova Senha</string>
+    <string name="confirmar_nova_senha">Confirmar Nova Senha</string>
+    <string name="msg_senha_forte">Crie uma senha forte e segura para o seu acesso médico.</string>
+    <string name="salvar_acessar">SALVAR E ACESSAR</string>
+
+    <!-- Dashboard & Clínica -->
+    <string name="ola_doutor">Olá, Dr(a). Silva</string>
+    <string name="agenda_pronta">Sua agenda de hoje está pronta</string>
+    <string name="pacientes">Pacientes</string>
+    <string name="proximo_inicio">Próximo Início</string>
+    <string name="fila_atendimento">FILA DE ATENDIMENTO</string>
+    <string name="gestao_clinica">Gestão Clínica</string>
+    <string name="especialidades_medicas">Especialidades Médicas</string>
+    <string name="corpo_clinico">Corpo Clínico</string>
+    <string name="agenda_medica">Agenda Médica</string>
+    <string name="faturamento_relatorios">Faturamento e Relatórios</string>
+    <string name="configuracoes_clinica">Configurações da Clínica</string>
+    <string name="resumo_operacional">RESUMO OPERACIONAL</string>
+
+    <!-- Consultas & Pacientes -->
+    <string name="gerencie_historico">Gerencie o histórico e novas consultas</string>
+    <string name="detalhes_atendimento">Preencha os detalhes do atendimento médico</string>
+    <string name="confirmar_consulta">CONFIRMAR CONSULTA</string>
+    <string name="id_paciente">ID do Paciente</string>
+    <string name="data_consulta_hint">Data da Consulta: AAAA-MM-DD</string>
+    <string name="horario_hint">Horário: HH:MM</string>
+    <string name="observacoes_medicas">Observações Médicas</string>
+    <string name="conheca_medicos">Conheça nossos médicos e especialistas</string>
+    <string name="novo_medico_btn">Novo Médico</string>
+    <string name="cadastrar_medico">Cadastrar Médico</string>
+    <string name="add_especialista">Adicione um novo especialista ao corpo clínico</string>
+    <string name="registrar_medico_btn">REGISTRAR MÉDICO</string>
+    <string name="nome_medico_hint">Nome Completo do Médico</string>
+    <string name="novo_paciente">Novo Paciente</string>
+    <string name="dados_prontuario">Preencha os dados para o prontuário</string>
+    <string name="registrar_paciente">Registrar Paciente</string>
+    <string name="nome_paciente_hint">Nome Completo do Paciente</string>
+    <string name="telefone_contato">Telefone de Contato</string>
+    <string name="buscar_paciente_hint">Buscar paciente...</string>
+    <string name="turnos_disponiveis">Turnos Disponíveis</string>
+
+    <!-- Configurações & Relatórios -->
+    <string name="configuracoes">Configurações</string>
+    <string name="gerencie_preferencias">Gerencie as preferências do seu sistema.</string>
+    <string name="perfil_conta">Perfil da Conta</string>
+    <string name="notificacoes">Notificações</string>
+    <string name="encerrar_sessao">Encerrar Sessão</string>
+    <string name="relatorios_medicos">Relatórios Médicos</string>
+    <string name="analise_fluxo">Analise o fluxo de atendimentos e produtividade.</string>
+    <string name="produtividade_diaria">PRODUTIVIDADE DIÁRIA</string>
+    <string name="gerando_dados_consultas">Gerando dados de consultas&#8230;</string>
+    <string name="acessando_prontuario">Acessando Prontuário&#8230;</string>
 </resources>

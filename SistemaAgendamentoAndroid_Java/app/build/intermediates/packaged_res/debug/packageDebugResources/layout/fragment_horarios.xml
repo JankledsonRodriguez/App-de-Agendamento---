@@ -61,7 +61,7 @@
                         android:id="@+id/txtDataSelecionada"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Turnos Disponíveis"
+                        android:text="@string/turnos_disponiveis"
                         android:fontFamily="sans-serif-black"
                         android:textColor="#1A1C1E"
                         android:textSize="16sp" />

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8F9FA">
@@ -28,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-black"
                     android:letterSpacing="-0.02"
-                    android:text="Olá, Dr(a). Silva"
+                    android:text="@string/ola_doutor"
                     android:textColor="#1A1C1E"
                     android:textSize="28sp" />
 
@@ -37,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Sua agenda de hoje está pronta"
+                    android:text="@string/agenda_pronta"
                     android:textColor="#6C757D"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -81,14 +82,14 @@
                         android:id="@+id/txtQtdPacientes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="--"
+                        tools:text="--"
                         android:textColor="?attr/colorPrimary"
                         android:textSize="24sp"
                         android:fontFamily="sans-serif-black"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pacientes"
+                        android:text="@string/pacientes"
                         android:textSize="12sp"
                         android:textColor="#6C757D"/>
                 </LinearLayout>
@@ -115,14 +116,14 @@
                         android:id="@+id/txtProximoHorario"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="--"
+                        tools:text="--"
                         android:textColor="#198754"
                         android:textSize="24sp"
                         android:fontFamily="sans-serif-black"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Próximo Início"
+                        android:text="@string/proximo_inicio"
                         android:textSize="12sp"
                         android:textColor="#6C757D"/>
                 </LinearLayout>
@@ -136,7 +137,7 @@
             android:layout_marginBottom="12dp"
             android:fontFamily="sans-serif-black"
             android:letterSpacing="0.05"
-            android:text="FILA DE ATENDIMENTO"
+            android:text="@string/fila_atendimento"
             android:textColor="#6C757D"
             android:textSize="12sp" />
 

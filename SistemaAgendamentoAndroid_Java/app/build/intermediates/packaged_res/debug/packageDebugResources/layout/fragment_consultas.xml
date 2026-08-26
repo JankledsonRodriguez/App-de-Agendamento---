@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
             android:letterSpacing="-0.04"
-            android:text="Minhas Consultas"
+            android:text="@string/meus_agendamentos"
             android:textColor="#1A1C1E"
             android:textSize="34sp" />
 
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Gerencie o histórico e novas consultas"
+            android:text="@string/gerencie_historico"
             android:textColor="#6C757D"
             android:textSize="15sp"
             android:letterSpacing="0.01" />
@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:text="Nova Consulta"
+        android:text="@string/novo_agendamento_btn"
         android:textColor="#FFFFFF"
         android:textAllCaps="false"
         android:fontFamily="sans-serif-medium"

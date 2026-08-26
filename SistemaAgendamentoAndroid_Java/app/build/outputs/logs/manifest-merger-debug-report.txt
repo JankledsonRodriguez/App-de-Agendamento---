@@ -91,7 +91,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ja
 	android:supportsRtl
 		ADDED from C:\Users\jankledson59266826\AndroidStudioProjects\App-de-Agendamento---\SistemaAgendamentoAndroid_Java\app\src\main\AndroidManifest.xml:7:9-35
 	android:label
-		ADDED from C:\Users\jankledson59266826\AndroidStudioProjects\App-de-Agendamento---\SistemaAgendamentoAndroid_Java\app\src\main\AndroidManifest.xml:6:9-37
+		ADDED from C:\Users\jankledson59266826\AndroidStudioProjects\App-de-Agendamento---\SistemaAgendamentoAndroid_Java\app\src\main\AndroidManifest.xml:6:9-41
 	android:allowBackup
 		ADDED from C:\Users\jankledson59266826\AndroidStudioProjects\App-de-Agendamento---\SistemaAgendamentoAndroid_Java\app\src\main\AndroidManifest.xml:5:9-35
 	android:theme

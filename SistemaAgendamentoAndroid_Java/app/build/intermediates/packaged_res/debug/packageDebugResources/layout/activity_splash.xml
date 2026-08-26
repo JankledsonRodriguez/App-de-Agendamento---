@@ -34,7 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CLINIQUE+"
+            android:text="@string/app_name_splash"
             android:textSize="38sp"
             android:fontFamily="sans-serif-black"
             android:textColor="#FFFFFF"
@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SUA SAÚDE, EM BOAS MÃOS"
+            android:text="@string/tagline_splash"
             android:textSize="12sp"
             android:textAllCaps="true"
             android:textColor="#B3FFFFFF"
@@ -77,7 +77,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Acessando Prontuário..."
+            android:text="@string/acessando_prontuario"
             android:textSize="12sp"
             android:textColor="#B3FFFFFF"
             android:layout_marginTop="16dp" />

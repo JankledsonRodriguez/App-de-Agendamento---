@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -37,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-black"
-            android:text="Cardiologia"
+            tools:text="Cardiologia"
             android:textColor="#1A1C1E"
             android:textSize="14sp"
             android:textAlignment="center" />
@@ -48,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Saúde do Coração"
+            tools:text="Saúde do Coração"
             android:textColor="#6C757D"
             android:textSize="12sp"
             android:textAlignment="center" />

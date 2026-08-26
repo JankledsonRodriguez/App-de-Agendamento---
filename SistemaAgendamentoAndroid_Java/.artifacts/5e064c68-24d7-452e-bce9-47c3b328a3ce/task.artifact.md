@@ -1,6 +1,7 @@
-# Tarefas: Redefinição de Senha com Código
+# Tarefas: Limpeza e Branding Final
 
-- [x] Atualizar `ForgotPasswordActivity.java` (Geração de código)
-- [x] Atualizar `activity_reset_password.xml` (Campo de código)
-- [x] Implementar lógica de verificação em `ResetPasswordActivity.java`
-- [x] Validar fluxo e gerar Walkthrough
+- [x] Centralizar strings em `strings.xml`
+- [x] Atualizar `AndroidManifest.xml` (Rótulo oficial do App)
+- [x] Limpar strings fixas nos arquivos de Layout
+- [x] Remover pastas vazias residuais
+- [x] Validar compilação e gerar Walkthrough
