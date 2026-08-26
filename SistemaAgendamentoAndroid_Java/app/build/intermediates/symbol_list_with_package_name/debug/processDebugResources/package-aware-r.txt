@@ -3118,8 +3118,10 @@ id btnRelatorios
 id btnSair
 id btnSalvarAgendamento
 id btnSalvarCliente
+id btnSalvarNovaSenha
 id btnSalvarProfissional
 id btnServicos
+id btnVerificarCodigo
 id buttonPanel
 id calendarView
 id cancel_button
@@ -3187,6 +3189,8 @@ id edit_query
 id edit_text_id
 id edtCRMCadastro
 id edtClienteId
+id edtCodigoVerificacao
+id edtConfirmarNovaSenha
 id edtData
 id edtEmail
 id edtEmailCadastro
@@ -3198,6 +3202,7 @@ id edtHora
 id edtNome
 id edtNomeCadastro
 id edtNomeProfissional
+id edtNovaSenha
 id edtObservacao
 id edtSenha
 id edtSenhaCadastro
@@ -3263,6 +3268,8 @@ id jumpToEnd
 id jumpToStart
 id labeled
 id layout
+id layoutStep1
+id layoutStep2
 id left
 id leftToRight
 id legacy
@@ -3519,6 +3526,8 @@ id txtProximoHorario
 id txtQtdPacientes
 id txtRelatorio
 id txtResumo
+id txtSubtitle
+id txtTitle
 id txtVoltarLogin
 id unchecked
 id uniform
@@ -3655,6 +3664,7 @@ layout activity_cadastro_medico
 layout activity_forgot_password
 layout activity_login
 layout activity_main
+layout activity_reset_password
 layout activity_splash
 layout custom_dialog
 layout design_bottom_navigation_item

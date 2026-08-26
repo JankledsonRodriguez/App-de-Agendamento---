@@ -117,6 +117,15 @@ public class ClinicaRepository {
         }
     }
 
+    public boolean atualizarSenha(String email, String novaSenha) throws SQLException {
+        String sql = "UPDATE usuarios SET senha = ? WHERE email = ?";
+        try (Connection c = DatabaseManager.getConnection(); PreparedStatement p = c.prepareStatement(sql)) {
+            p.setString(1, novaSenha);
+            p.setString(2, email);
+            return p.executeUpdate() == 1;
+        }
+    }
+
     public List<Especialidade> listarEspecialidades() {
         List<Especialidade> lista = new ArrayList<>();
         lista.add(new Especialidade(1, "Cardiologia", "Saúde do Coração", android.R.drawable.ic_menu_myplaces));

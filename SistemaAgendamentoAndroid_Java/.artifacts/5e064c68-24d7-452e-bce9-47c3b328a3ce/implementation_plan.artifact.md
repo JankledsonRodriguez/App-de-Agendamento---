@@ -1,49 +1,46 @@
-# Plano de Implementação: Autocadastro de Médicos
+# Plano de Implementação: Redefinição de Senha com Código de Verificação
 
-Este plano visa criar o fluxo de autocadastro para médicos diretamente a partir da tela de login, garantindo que novos profissionais possam se registrar no sistema **Clinique+**.
+Este plano detalha a adição de uma etapa de segurança no fluxo de recuperação de senha: a verificação de um código enviado por e-mail (simulado) antes de permitir a criação da nova senha.
 
 ## User Review Required
 
 > [!IMPORTANT]
-> Vou adicionar um novo botão "Não tem conta? Cadastre-se" na tela de login. Ao clicar, o médico será direcionado para uma nova tela de cadastro (`CadastroMedicoActivity`).
+> O processo de redefinição de senha agora exigirá um código de 6 dígitos. Para fins de teste, o código será gerado e exibido via `Toast` na tela anterior, simulando o recebimento por e-mail.
 
 ## Proposed Changes
 
-### [Layouts]
+### [Navegação e Fluxo]
 
-#### [MODIFY] [activity_login.xml](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/res/layout/activity_login.xml)
-- Adicionar um botão ou TextView clicável: "Não tem conta? Cadastre-se".
+#### [MODIFY] [ForgotPasswordActivity.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/ForgotPasswordActivity.java)
+- Gerar um código aleatório de 6 dígitos.
+- Passar o e-mail e o código gerado para a próxima tela (`ResetPasswordActivity`).
+- Exibir o código em um `Toast` para que o usuário possa usá-lo (simulação de e-mail).
 
-#### [NEW] [activity_cadastro_medico.xml](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/res/layout/activity_cadastro_medico.xml)
-- Criar a tela de cadastro com o visual premium do app:
-    - Campo: Nome Completo.
-    - Campo: E-mail (Institucional).
-    - Campo: Especialidade Médica.
-    - Campo: CRM / Registro Profissional.
-    - Campo: Senha de Acesso.
-    - Botão: "Finalizar Cadastro".
+---
+
+### [Interface do Usuário (Layout)]
+
+#### [MODIFY] [activity_reset_password.xml](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/res/layout/activity_reset_password.xml)
+- Adicionar um campo `TextInputLayout` para o "Código de Verificação".
+- Organizar o layout para que os campos de senha fiquem inicialmente ocultos ou desabilitados, aparecendo apenas após a validação do código.
 
 ---
 
 ### [Lógica (Java)]
 
-#### [MODIFY] [LoginActivity.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/LoginActivity.java)
-- Implementar a navegação para a `CadastroMedicoActivity`.
-
-#### [NEW] [CadastroMedicoActivity.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/CadastroMedicoActivity.java)
-- Lógica para capturar os dados e salvar no banco de dados.
-- *Nota:* O cadastro inserirá os dados nas tabelas `usuarios` (para login) e `medicos` (para perfil profissional).
-
-#### [MODIFY] [ClinicaRepository.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/repository/ClinicaRepository.java)
-- Adicionar método `autocadastroMedico(nome, email, especialidade, crm, senha)` que realiza as duas inserções em uma transação.
-
-#### [MODIFY] [AndroidManifest.xml](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/AndroidManifest.xml)
-- Registrar a nova Activity.
+#### [MODIFY] [ResetPasswordActivity.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/ResetPasswordActivity.java)
+- Implementar a lógica de "Avançar":
+    1. O usuário insere o código recebido.
+    2. O app verifica se o código bate com o que foi "enviado".
+    3. Se correto, o app libera os campos de nova senha e confirmação.
+    4. Ao final, salva a senha no banco de dados e retorna ao Login.
 
 ## Verification Plan
 
 ### Manual Verification
-1. Abrir a tela de Login e verificar o novo botão de cadastro.
-2. Clicar no botão e validar se a tela de Cadastro de Médico abre com o visual correto.
-3. Preencher todos os campos e realizar o cadastro.
-4. Tentar fazer login com as novas credenciais criadas.
+1. No Login, clicar em "Esqueceu a senha?".
+2. Inserir o e-mail e clicar em "Enviar".
+3. Observar o código gerado no `Toast`.
+4. Na tela de redefinição, inserir o código e clicar em "Verificar Código".
+5. Confirmar que os campos de senha foram liberados.
+6. Definir a nova senha e verificar se o retorno ao Login ocorre com sucesso.

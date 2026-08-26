@@ -1,9 +1,6 @@
-# Tarefas: Autocadastro de Médicos
+# Tarefas: Redefinição de Senha com Código
 
-- [x] Adicionar botão de cadastro em `activity_login.xml`
-- [x] Criar layout `activity_cadastro_medico.xml` (Design Clinique+)
-- [x] Implementar `CadastroMedicoActivity.java`
-- [x] Adicionar lógica de autocadastro em `ClinicaRepository.java`
-- [x] Registrar nova Activity no `AndroidManifest.xml`
-- [x] Configurar navegação no `LoginActivity.java`
+- [x] Atualizar `ForgotPasswordActivity.java` (Geração de código)
+- [x] Atualizar `activity_reset_password.xml` (Campo de código)
+- [x] Implementar lógica de verificação em `ResetPasswordActivity.java`
 - [x] Validar fluxo e gerar Walkthrough
