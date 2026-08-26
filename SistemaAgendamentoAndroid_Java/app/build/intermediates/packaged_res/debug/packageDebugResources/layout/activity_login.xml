@@ -105,12 +105,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="24dp"
-                android:text="Esqueceu a senha? Contate o TI"
-                android:textColor="#0061FF"
-                android:textSize="13sp"
-                android:fontFamily="sans-serif-medium"
                 android:clickable="true"
-                android:focusable="true" />
+                android:focusable="true"
+                android:fontFamily="sans-serif-medium"
+                android:text="Esqueceu a senha?"
+                android:textColor="#0061FF"
+                android:textSize="13sp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnIrParaCadastro"

@@ -40,8 +40,8 @@
         "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_relatorios.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/activity_reset_password.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/activity_reset_password.xml"
+        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/activity_login.xml",
+        "source": "com.example.agendamento.app-main-35:/layout/activity_login.xml"
     },
     {
         "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_novo_paciente.xml",

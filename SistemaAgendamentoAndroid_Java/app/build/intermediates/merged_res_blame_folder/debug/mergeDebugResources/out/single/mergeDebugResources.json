@@ -1,9 +1,5 @@
 [
     {
-        "merged": "com.example.agendamento.app-debug-33:/layout_activity_reset_password.xml.flat",
-        "source": "com.example.agendamento.app-main-35:/layout/activity_reset_password.xml"
-    },
-    {
         "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-debug-33:\\layout_activity_cadastro_medico.xml.flat",
         "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\activity_cadastro_medico.xml"
     },
@@ -52,12 +48,12 @@
         "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\item_especialidade.xml"
     },
     {
-        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-debug-33:\\layout_fragment_corpo_clinico.xml.flat",
-        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_corpo_clinico.xml"
-    },
-    {
         "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-debug-33:\\layout_fragment_pacientes.xml.flat",
         "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_pacientes.xml"
+    },
+    {
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-debug-33:\\layout_fragment_corpo_clinico.xml.flat",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_corpo_clinico.xml"
     },
     {
         "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-debug-33:\\drawable_ic_people.xml.flat",
@@ -70,6 +66,10 @@
     {
         "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-debug-33:\\layout_activity_login.xml.flat",
         "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "com.example.agendamento.app-debug-33:/layout_activity_login.xml.flat",
+        "source": "com.example.agendamento.app-main-35:/layout/activity_login.xml"
     },
     {
         "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-debug-33:\\layout_fragment_relatorios.xml.flat",
