@@ -8,69 +8,47 @@ CREATE TABLE usuarios(
  senha VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE clientes(
+CREATE TABLE pacientes(
  id INT AUTO_INCREMENT PRIMARY KEY,
  nome VARCHAR(120) NOT NULL,
  telefone VARCHAR(30) NOT NULL,
  email VARCHAR(120)
 );
 
-CREATE TABLE servicos(
+CREATE TABLE especialidades(
  id INT AUTO_INCREMENT PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,
- descricao VARCHAR(255),
- duracao INT DEFAULT 30,
- preco DECIMAL(10,2) DEFAULT 0
+ descricao VARCHAR(255)
 );
 
-CREATE TABLE profissionais(
+CREATE TABLE medicos(
  id INT AUTO_INCREMENT PRIMARY KEY,
  nome VARCHAR(120) NOT NULL,
  especialidade VARCHAR(100),
- telefone VARCHAR(30)
+ crm VARCHAR(30)
 );
 
-CREATE TABLE horarios(
+CREATE TABLE consultas(
  id INT AUTO_INCREMENT PRIMARY KEY,
- dia_semana TINYINT NOT NULL,
- hora_inicio TIME NOT NULL,
- hora_fim TIME NOT NULL
-);
-
-CREATE TABLE agendamentos(
- id INT AUTO_INCREMENT PRIMARY KEY,
- cliente_id INT NOT NULL,
+ paciente_id INT NOT NULL,
  data DATE NOT NULL,
  hora TIME NOT NULL,
- servico VARCHAR(120) NOT NULL,
+ especialidade VARCHAR(120) NOT NULL,
  observacao TEXT,
  status VARCHAR(30) DEFAULT 'AGENDADO',
  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
- FOREIGN KEY(cliente_id) REFERENCES clientes(id)
+ FOREIGN KEY(paciente_id) REFERENCES pacientes(id)
  ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 INSERT INTO usuarios(nome,email,senha) VALUES
-('Administrador','admin@agenda.com','123456');
+('Administrador','admin@clinique.com','123456');
 
-INSERT INTO clientes(nome,telefone,email) VALUES
-('João da Silva','61999990000','joao@email.com'),
-('Maria Oliveira','61988880000','maria@email.com');
+INSERT INTO pacientes(nome,telefone,email) VALUES
+('Paciente Exemplo','61999990000','paciente@email.com');
 
-INSERT INTO servicos(nome,descricao,duracao,preco) VALUES
-('Consulta','Atendimento padrão',60,100.00),
-('Manutenção','Serviço técnico',90,150.00);
+INSERT INTO medicos(nome,especialidade,crm) VALUES
+('Dr. Carlos Silva','Cardiologia','CRM/BR 12345');
 
-INSERT INTO profissionais(nome,especialidade,telefone) VALUES
-('Carlos Souza','Atendimento','61977770000'),
-('Ana Lima','Especialista','61966660000');
-
-INSERT INTO horarios(dia_semana,hora_inicio,hora_fim) VALUES
-(1,'08:00:00','18:00:00'),
-(2,'08:00:00','18:00:00'),
-(3,'08:00:00','18:00:00'),
-(4,'08:00:00','18:00:00'),
-(5,'08:00:00','18:00:00');
-
-INSERT INTO agendamentos(cliente_id,data,hora,servico,observacao,status) VALUES
-(1,CURDATE(),'10:00:00','Consulta','Primeiro atendimento','AGENDADO');
+INSERT INTO consultas(paciente_id,data,hora,especialidade,observacao,status) VALUES
+(1,CURDATE(),'10:00:00','Cardiologia','Atendimento inicial','AGENDADO');

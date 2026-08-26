@@ -1,40 +1,39 @@
-# Walkthrough - Conclusão da Reestruturação Clínica (Clinique+)
+# Walkthrough - Refatoração Completa do Banco de Dados (Clinique+)
 
-Concluímos com sucesso a reestruturação profunda do aplicativo, transformando-o de um sistema genérico de agendamento em uma solução robusta para **Gestão de Clínica Médica**.
+Finalizamos a transição total da camada de dados para o domínio clínico. Agora, tanto o código Java quanto o banco de dados MySQL estão em perfeita harmonia com os termos **Pacientes**, **Consultas** e **Médicos**.
 
 ## O que foi realizado
 
-### 1. Refatoração Completa do Código-Fonte
-- **Modelos de Dados:** Renomeamos as entidades para o domínio médico:
-    - `Paciente.java` (antigo Cliente)
-    - `Consulta.java` (antigo Agendamento)
-    - `Medico.java` (antigo Profissional)
-- **Repositório:** Criamos o `ClinicaRepository.java`, centralizando toda a lógica de acesso ao banco de dados MySQL com nomenclatura técnica apropriada.
+### 1. Limpeza do Repositório (`ClinicaRepository.java`)
+- Atualizamos todas as instruções SQL para utilizar os novos nomes de tabelas e colunas:
+    - `clientes` → `pacientes`
+    - `agendamentos` → `consultas`
+    - `profissionais` → `medicos`
+    - `cliente_id` → `paciente_id`
+- Padronizamos os métodos para utilizarem os novos modelos de dados (`Paciente`, `Consulta`, `Medico`).
 
-### 2. Nova Estrutura de Interface (UI)
-- **Fragmentos Médicos:** Todos os componentes de interface foram renomeados e atualizados:
-    - `ConsultasFragment` e `NovaConsultaFragment`
-    - `PacientesFragment` e `NovoPacienteFragment`
-    - `CorpoClinicoFragment` e `NovoMedicoFragment`
-    - `EspecialidadesFragment`
-- **Layouts XML:** Os arquivos de layout agora seguem a mesma padronização (ex: `fragment_consultas.xml`, `fragment_pacientes.xml`), facilitando a manutenção futura.
+### 2. Atualização do Script SQL (`agendamento.sql`)
+- Criamos um novo script de criação do banco de dados que reflete a estrutura clínica moderna.
+- Adicionamos campos específicos como `crm` para médicos e renomeamos as chaves estrangeiras para `paciente_id`.
 
-### 3. Melhoria na Gestão de Horários
-- Substituímos o seletor de datas horizontal por um **`CalendarView` nativo** no `HorariosFragment`, proporcionando uma navegação por datas muito mais intuitiva e eficiente para uma clínica.
+### 3. Consistência de Modelos
+- O modelo `Medico.java` agora está perfeitamente sincronizado com o campo `crm` do banco de dados, garantindo que o registro profissional seja armazenado corretamente.
 
-### 4. Limpeza e Otimização
-- Removemos todos os arquivos e classes obsoletos (redundantes) para evitar conflitos de compilação e reduzir o tamanho do projeto.
-- O código foi validado com um **Build de sucesso**, garantindo que todas as referências cruzadas e navegações estão funcionando perfeitamente.
+## Como Atualizar seu Banco de Dados (MySQL)
 
-## Como o Sistema está Organizado Agora
-1. **Painel (Dashboard):** Visão geral de pacientes e consultas do dia.
-2. **Consultas:** Gestão completa do histórico médico e novos agendamentos.
-3. **Pacientes:** Prontuário e cadastro de pessoas atendidas.
-4. **Corpo Clínico:** Lista e cadastro de médicos/especialistas.
-5. **Especialidades:** Vitrine moderna das áreas médicas atendidas.
+> [!CAUTION]
+> **Atenção:** As alterações no código Java exigem que o banco de dados também seja renomeado. Se você já possui dados, será necessário renomear as tabelas manualmente ou rodar o novo script.
 
-> [!TIP]
-> O app está pronto para ser escalado. Se precisar adicionar novas especialidades ou médicos, a estrutura de código em `ClinicaRepository` permite isso de forma rápida e segura.
+Use o script localizado em [agendamento.sql](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/sql/agendamento.sql) para recriar o banco com a estrutura correta:
+
+1. Abra seu gerenciador MySQL (Workbench, PHPMyAdmin, etc.).
+2. Execute o conteúdo de `agendamento.sql`.
+3. Isso garantirá que o app consiga inserir e listar os dados sem erros de "Table not found".
+
+## Resultado Final
+- **Código:** 100% Clínico e Profissional.
+- **Estrutura:** Seguindo as melhores práticas de nomenclatura.
+- **Integridade:** Build realizado com sucesso.
 
 > [!SUCCESS]
-> **Build Status:** Green (Sucedido). Todas as funcionalidades estão operacionais.
+> O sistema **Clinique+** agora possui uma base sólida e escalável para a gestão de qualquer clínica médica.

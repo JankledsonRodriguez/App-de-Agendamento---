@@ -1,42 +1,68 @@
-# Plano de Reestruturação Completa: Domínio de Clínica Médica (Clinique+)
+# Plano de Refatoração de Banco de Dados e Repositório (Clinique+)
 
-Este plano detalha a refatoração total do código-fonte e dos recursos para consolidar a transição de um sistema genérico de agendamento para um sistema especializado de **Gestão de Clínica Médica**.
+Este plano visa unificar toda a camada de dados para o domínio clínico, renomeando tabelas e colunas no SQL e no Repositório para eliminar de vez termos genéricos como "clientes" e "agendamentos".
 
 ## User Review Required
 
 > [!IMPORTANT]
-> Realizaremos uma refatoração em larga escala renomeando classes, arquivos Java e arquivos XML. Isso tornará o código muito mais legível e profissional. Embora a lógica de banco de dados (MySQL) permaneça a mesma para evitar migrações de esquema, os nomes no código refletirão o novo domínio médico.
+> Esta alteração modificará as strings SQL no código. Para que o aplicativo continue funcionando, o banco de dados MySQL precisará ser atualizado com os novos nomes de tabela e coluna. Vou fornecer o script SQL atualizado.
 
 ## Proposed Changes
 
-### 1. Modelos (Models)
-Substituição de nomes genéricos por termos clínicos:
-- `Cliente.java` -> `Paciente.java`
-- `Agendamento.java` -> `Consulta.java`
-- `Profissional.java` -> `Medico.java`
+### [Repositório e SQL]
 
-### 2. Repositório (Repository)
-- `AgendamentoRepository.java` -> `ClinicaRepository.java`
-- Atualização interna dos métodos (ex: `listarClientes()` -> `listarPacientes()`).
+#### [MODIFY] [ClinicaRepository.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/repository/ClinicaRepository.java)
+- Renomear tabelas SQL: `clientes` -> `pacientes`, `agendamentos` -> `consultas`.
+- Renomear colunas SQL: `cliente_id` -> `paciente_id`, `cliente_nome` -> `paciente_nome`.
+- Ajustar métodos para usar o termo `CRM` ou `registro` em vez de `telefone` para os médicos.
 
-### 3. Interface do Usuário (UI) - Fragmentos
-Renomeação de todos os fragmentos e seus respectivos layouts para consistência:
-- `AgendamentosFragment` -> `ConsultasFragment` (`fragment_consultas.xml`)
-- `NovoAgendamentoFragment` -> `NovaConsultaFragment` (`fragment_nova_consulta.xml`)
-- `ProfissionaisFragment` -> `CorpoClinicoFragment` (`fragment_corpo_clinico.xml`)
-- `NovoProfissionalFragment` -> `NovoMedicoFragment` (`fragment_novo_medico.xml`)
-- `ServicosFragment` -> `EspecialidadesFragment` (`fragment_especialidades.xml`)
+#### [MODIFY] [agendamento.sql](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/sql/agendamento.sql)
+- Atualizar o script de criação do banco para refletir a nova nomenclatura:
+    - Tabela `clientes` passa a ser `pacientes`.
+    - Tabela `agendamentos` passa a ser `consultas`.
+    - Coluna `cliente_id` passa a ser `paciente_id`.
+    - Tabela `profissionais` pode ser renomeada para `medicos` para maior sofisticação.
 
-### 4. Navegação e IDs
-- Atualização da `MainActivity.java` e `MenuFragment.java` para refletir os novos nomes de classe.
-- Padronização de IDs dentro dos XMLs (ex: `recyclerAgendamentos` -> `recyclerConsultas`).
+### [Modelos]
+
+#### [MODIFY] [Medico.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/model/Medico.java)
+- Garantir que o campo seja `registroCRM` e não `telefone`.
+
+---
+
+## Script SQL Sugerido (Consolidado)
+
+```sql
+-- Criar tabelas com nomes clínicos
+CREATE TABLE pacientes(
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ nome VARCHAR(120) NOT NULL,
+ telefone VARCHAR(30) NOT NULL,
+ email VARCHAR(120)
+);
+
+CREATE TABLE medicos(
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ nome VARCHAR(120) NOT NULL,
+ especialidade VARCHAR(100),
+ crm VARCHAR(30)
+);
+
+CREATE TABLE consultas(
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ paciente_id INT NOT NULL,
+ data DATE NOT NULL,
+ hora TIME NOT NULL,
+ especialidade VARCHAR(120) NOT NULL,
+ observacao TEXT,
+ status VARCHAR(30) DEFAULT 'AGENDADO',
+ FOREIGN KEY(paciente_id) REFERENCES pacientes(id)
+);
+```
 
 ## Verification Plan
 
-### Automated Verification
-- Executar `gradle build` para garantir que todas as referências cruzadas e imports foram corrigidos.
-
 ### Manual Verification
-1. Abrir o app e navegar por todas as seções (Painel, Pacientes, Consultas, Corpo Clínico, Especialidades).
-2. Tentar cadastrar um novo Paciente e uma nova Consulta para validar a persistência.
-3. Verificar se as telas carregam sem o erro de "Cannot resolve symbol".
+1. Executar o Build do projeto.
+2. Fornecer ao usuário o script SQL para atualização do banco MySQL local.
+3. Verificar no código Java se não restou nenhuma menção a `cliente_id` ou tabelas antigas.

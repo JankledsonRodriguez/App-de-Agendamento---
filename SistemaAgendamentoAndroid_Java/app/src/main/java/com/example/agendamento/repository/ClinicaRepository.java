@@ -23,7 +23,7 @@ public class ClinicaRepository {
 
     public List<Paciente> listarPacientes() throws SQLException {
         List<Paciente> lista = new ArrayList<>();
-        String sql = "SELECT id, nome, telefone, email FROM clientes ORDER BY nome";
+        String sql = "SELECT id, nome, telefone, email FROM pacientes ORDER BY nome";
         try (Connection c = DatabaseManager.getConnection();
              PreparedStatement p = c.prepareStatement(sql);
              ResultSet r = p.executeQuery()) {
@@ -34,7 +34,7 @@ public class ClinicaRepository {
     }
 
     public boolean inserirPaciente(String nome, String telefone, String email) throws SQLException {
-        String sql = "INSERT INTO clientes(nome, telefone, email) VALUES(?,?,?)";
+        String sql = "INSERT INTO pacientes(nome, telefone, email) VALUES(?,?,?)";
         try (Connection c = DatabaseManager.getConnection(); PreparedStatement p = c.prepareStatement(sql)) {
             p.setString(1, nome); p.setString(2, telefone); p.setString(3, email); return p.executeUpdate() == 1;
         }
@@ -42,18 +42,18 @@ public class ClinicaRepository {
 
     public List<Consulta> listarConsultas() throws SQLException {
         List<Consulta> lista = new ArrayList<>();
-        String sql = "SELECT a.id, a.cliente_id, a.data, a.hora, a.servico, a.observacao, a.status, c.nome cliente_nome " +
-                "FROM agendamentos a JOIN clientes c ON c.id=a.cliente_id ORDER BY a.data, a.hora";
+        String sql = "SELECT c.id, c.paciente_id, c.data, c.hora, c.especialidade, c.observacao, c.status, p.nome paciente_nome " +
+                "FROM consultas c JOIN pacientes p ON p.id=c.paciente_id ORDER BY c.data, c.hora";
         try (Connection c = DatabaseManager.getConnection(); PreparedStatement p = c.prepareStatement(sql); ResultSet r = p.executeQuery()) {
-            while (r.next()) lista.add(new Consulta(r.getInt("id"), r.getInt("cliente_id"),
-                    r.getString("data"), r.getString("hora"), r.getString("servico"),
-                    r.getString("observacao"), r.getString("status"), r.getString("cliente_nome")));
+            while (r.next()) lista.add(new Consulta(r.getInt("id"), r.getInt("paciente_id"),
+                    r.getString("data"), r.getString("hora"), r.getString("especialidade"),
+                    r.getString("observacao"), r.getString("status"), r.getString("paciente_nome")));
         }
         return lista;
     }
 
     public boolean inserirConsulta(int pacienteId, String data, String hora, String especialidade, String obs) throws SQLException {
-        String sql = "INSERT INTO agendamentos(cliente_id, data, hora, servico, observacao, status) VALUES(?,?,?,?,?,'AGENDADO')";
+        String sql = "INSERT INTO consultas(paciente_id, data, hora, especialidade, observacao, status) VALUES(?,?,?,?,?,'AGENDADO')";
         try (Connection c = DatabaseManager.getConnection(); PreparedStatement p = c.prepareStatement(sql)) {
             p.setInt(1, pacienteId); p.setString(2, data); p.setString(3, hora); p.setString(4, especialidade); p.setString(5, obs);
             return p.executeUpdate() == 1;
@@ -62,18 +62,18 @@ public class ClinicaRepository {
 
     public List<Medico> listarCorpoClinico() throws SQLException {
         List<Medico> lista = new ArrayList<>();
-        String sql = "SELECT id, nome, especialidade, telefone FROM profissionais ORDER BY nome";
+        String sql = "SELECT id, nome, especialidade, crm FROM medicos ORDER BY nome";
         try (Connection c = DatabaseManager.getConnection();
              PreparedStatement p = c.prepareStatement(sql);
              ResultSet r = p.executeQuery()) {
             while (r.next()) lista.add(new Medico(r.getInt("id"), r.getString("nome"),
-                    r.getString("especialidade"), r.getString("telefone")));
+                    r.getString("especialidade"), r.getString("crm")));
         }
         return lista;
     }
 
     public boolean inserirMedico(String nome, String especialidade, String crm) throws SQLException {
-        String sql = "INSERT INTO profissionais(nome, especialidade, telefone) VALUES(?,?,?)";
+        String sql = "INSERT INTO medicos(nome, especialidade, crm) VALUES(?,?,?)";
         try (Connection c = DatabaseManager.getConnection(); PreparedStatement p = c.prepareStatement(sql)) {
             p.setString(1, nome); p.setString(2, especialidade); p.setString(3, crm);
             return p.executeUpdate() == 1;

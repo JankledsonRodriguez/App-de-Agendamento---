@@ -1,11 +1,6 @@
-# Tarefas: Reestruturação Total Clinique+
+# Tarefas: Refatoração Clínica de Dados (SQL & Repository)
 
-- [x] Refatorar Modelos (`Paciente`, `Consulta`, `Medico`)
-- [x] Refatorar Repositório (`ClinicaRepository`)
-- [x] Renomear e atualizar Fragmentos de UI:
-    - [x] `ConsultasFragment` e `NovaConsultaFragment`
-    - [x] `CorpoClinicoFragment` e `NovoMedicoFragment`
-    - [x] `EspecialidadesFragment`
-- [x] Renomear Arquivos de Layout (XML)
-- [x] Atualizar Navegação Principal (`MainActivity`, `MenuFragment`, `InicioFragment`)
-- [x] Validar compilação e integridade de dados
+- [x] Atualizar `ClinicaRepository.java` (Queries com nomes clínicos)
+- [x] Atualizar `agendamento.sql` (Script de criação unificado)
+- [x] Validar integridade do modelo `Medico.java`
+- [x] Gerar Walkthrough final com orientações para o banco de dados
