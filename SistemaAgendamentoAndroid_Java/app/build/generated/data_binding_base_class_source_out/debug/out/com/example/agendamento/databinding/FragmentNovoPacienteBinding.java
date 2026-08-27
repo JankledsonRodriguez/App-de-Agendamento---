@@ -24,7 +24,16 @@ public final class FragmentNovoPacienteBinding implements ViewBinding {
   public final MaterialButton btnSalvarCliente;
 
   @NonNull
-  public final TextInputEditText edtEmailCliente;
+  public final TextInputEditText edtCPF;
+
+  @NonNull
+  public final TextInputEditText edtDataNasc;
+
+  @NonNull
+  public final TextInputEditText edtEmail;
+
+  @NonNull
+  public final TextInputEditText edtEndereco;
 
   @NonNull
   public final TextInputEditText edtNome;
@@ -33,11 +42,16 @@ public final class FragmentNovoPacienteBinding implements ViewBinding {
   public final TextInputEditText edtTelefone;
 
   private FragmentNovoPacienteBinding(@NonNull ScrollView rootView,
-      @NonNull MaterialButton btnSalvarCliente, @NonNull TextInputEditText edtEmailCliente,
-      @NonNull TextInputEditText edtNome, @NonNull TextInputEditText edtTelefone) {
+      @NonNull MaterialButton btnSalvarCliente, @NonNull TextInputEditText edtCPF,
+      @NonNull TextInputEditText edtDataNasc, @NonNull TextInputEditText edtEmail,
+      @NonNull TextInputEditText edtEndereco, @NonNull TextInputEditText edtNome,
+      @NonNull TextInputEditText edtTelefone) {
     this.rootView = rootView;
     this.btnSalvarCliente = btnSalvarCliente;
-    this.edtEmailCliente = edtEmailCliente;
+    this.edtCPF = edtCPF;
+    this.edtDataNasc = edtDataNasc;
+    this.edtEmail = edtEmail;
+    this.edtEndereco = edtEndereco;
     this.edtNome = edtNome;
     this.edtTelefone = edtTelefone;
   }
@@ -75,9 +89,27 @@ public final class FragmentNovoPacienteBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.edtEmailCliente;
-      TextInputEditText edtEmailCliente = ViewBindings.findChildViewById(rootView, id);
-      if (edtEmailCliente == null) {
+      id = R.id.edtCPF;
+      TextInputEditText edtCPF = ViewBindings.findChildViewById(rootView, id);
+      if (edtCPF == null) {
+        break missingId;
+      }
+
+      id = R.id.edtDataNasc;
+      TextInputEditText edtDataNasc = ViewBindings.findChildViewById(rootView, id);
+      if (edtDataNasc == null) {
+        break missingId;
+      }
+
+      id = R.id.edtEmail;
+      TextInputEditText edtEmail = ViewBindings.findChildViewById(rootView, id);
+      if (edtEmail == null) {
+        break missingId;
+      }
+
+      id = R.id.edtEndereco;
+      TextInputEditText edtEndereco = ViewBindings.findChildViewById(rootView, id);
+      if (edtEndereco == null) {
         break missingId;
       }
 
@@ -93,8 +125,8 @@ public final class FragmentNovoPacienteBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentNovoPacienteBinding((ScrollView) rootView, btnSalvarCliente,
-          edtEmailCliente, edtNome, edtTelefone);
+      return new FragmentNovoPacienteBinding((ScrollView) rootView, btnSalvarCliente, edtCPF,
+          edtDataNasc, edtEmail, edtEndereco, edtNome, edtTelefone);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -28,70 +29,142 @@
             android:textColor="#6C757D"
             android:layout_marginBottom="40dp"/>
 
-  <com.google.android.material.textfield.TextInputLayout
-   android:layout_width="match_parent"
-   android:layout_height="wrap_content"
-   android:hint="@string/nome_paciente_hint"
+        <!-- Nome -->
+        <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nome_completo"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:startIconDrawable="@android:drawable/ic_menu_myplaces"
+            app:startIconTint="?attr/colorPrimary">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:fontFamily="sans-serif-medium"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- CPF -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/cpf_label"
             app:boxCornerRadiusTopStart="16dp"
             app:boxCornerRadiusTopEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
             app:boxCornerRadiusBottomEnd="16dp"
             app:startIconDrawable="@android:drawable/ic_menu_edit"
             app:startIconTint="?attr/colorPrimary">
-   <com.google.android.material.textfield.TextInputEditText
-    android:id="@+id/edtNome"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:inputType="textPersonName"/>
-  </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtCPF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="14"
+                android:fontFamily="sans-serif-medium"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-  <com.google.android.material.textfield.TextInputLayout
-   android:layout_width="match_parent"
-   android:layout_height="wrap_content"
-   android:hint="@string/telefone_contato"
-            android:layout_marginTop="20dp"
+        <!-- Data de Nascimento -->
+        <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/nascimento_label"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:startIconDrawable="@android:drawable/ic_menu_today"
+            app:startIconTint="?attr/colorPrimary">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtDataNasc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none"
+                android:fontFamily="sans-serif-medium"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Telefone -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/telefone_contato"
             app:boxCornerRadiusTopStart="16dp"
             app:boxCornerRadiusTopEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
             app:boxCornerRadiusBottomEnd="16dp"
             app:startIconDrawable="@android:drawable/ic_menu_call"
             app:startIconTint="?attr/colorPrimary">
-   <com.google.android.material.textfield.TextInputEditText
-    android:id="@+id/edtTelefone"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:inputType="phone"/>
-  </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTelefone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:fontFamily="sans-serif-medium"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-  <com.google.android.material.textfield.TextInputLayout
-   android:layout_width="match_parent"
-   android:layout_height="wrap_content"
-   android:hint="@string/email_institucional"
-            android:layout_marginTop="20dp"
+        <!-- E-mail -->
+        <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/email_institucional"
             app:boxCornerRadiusTopStart="16dp"
             app:boxCornerRadiusTopEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
             app:boxCornerRadiusBottomEnd="16dp"
             app:startIconDrawable="@android:drawable/ic_dialog_email"
             app:startIconTint="?attr/colorPrimary">
-   <com.google.android.material.textfield.TextInputEditText
-    android:id="@+id/edtEmailCliente"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:inputType="textEmailAddress"/>
-  </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:fontFamily="sans-serif-medium"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-  <com.google.android.material.button.MaterialButton
-   android:id="@+id/btnSalvarCliente"
-   android:layout_width="match_parent"
+        <!-- Endereço -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/endereco_label"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:startIconDrawable="@android:drawable/ic_dialog_map"
+            app:startIconTint="?attr/colorPrimary">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtEndereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPostalAddress"
+                android:fontFamily="sans-serif-medium"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSalvarCliente"
+            android:layout_width="match_parent"
             android:layout_height="64dp"
+            android:layout_marginTop="48dp"
             android:text="@string/registrar_paciente"
             android:textSize="16sp"
-            android:fontFamily="sans-serif-medium"
-            android:layout_marginTop="48dp"
+            android:fontFamily="sans-serif-black"
             app:cornerRadius="32dp"
             app:icon="@android:drawable/ic_menu_save"
             app:iconGravity="textStart"/>

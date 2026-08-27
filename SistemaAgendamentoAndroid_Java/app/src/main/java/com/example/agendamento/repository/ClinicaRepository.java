@@ -1,5 +1,9 @@
 package com.example.agendamento.repository;
 
+import android.app.AlertDialog;
+import android.util.Log;
+
+import com.example.agendamento.LoginActivity;
 import com.example.agendamento.database.DatabaseManager;
 import com.example.agendamento.model.Consulta;
 import com.example.agendamento.model.Paciente;
@@ -17,27 +21,71 @@ public class ClinicaRepository {
         try (Connection c = DatabaseManager.getConnection();
              PreparedStatement p = c.prepareStatement(sql)) {
             p.setString(1, email); p.setString(2, senha);
-            try (ResultSet r = p.executeQuery()) { return r.next(); }
+            try (ResultSet r = p.executeQuery()) { return r.next();
+                }
+
+
         }
     }
 
     public List<Paciente> listarPacientes() throws SQLException {
         List<Paciente> lista = new ArrayList<>();
-        String sql = "SELECT id, nome, telefone, email FROM pacientes ORDER BY nome";
+        String sql = "SELECT id, nome, cpf, data_nascimento, telefone, email, endereco FROM pacientes ORDER BY nome";
         try (Connection c = DatabaseManager.getConnection();
              PreparedStatement p = c.prepareStatement(sql);
              ResultSet r = p.executeQuery()) {
             while (r.next()) lista.add(new Paciente(r.getInt("id"), r.getString("nome"),
-                    r.getString("telefone"), r.getString("email")));
+                    r.getString("cpf"), r.getString("data_nascimento"),
+                    r.getString("telefone"), r.getString("email"), r.getString("endereco")));
         }
         return lista;
     }
 
-    public boolean inserirPaciente(String nome, String telefone, String email) throws SQLException {
-        String sql = "INSERT INTO pacientes(nome, telefone, email) VALUES(?,?,?)";
+    public boolean inserirPaciente(String nome, String cpf, String dataNasc, String telefone, String email, String endereco) throws SQLException {
+        String sql = "INSERT INTO pacientes(nome, cpf, data_nascimento, telefone, email, endereco) VALUES(?,?,?,?,?,?)";
         try (Connection c = DatabaseManager.getConnection(); PreparedStatement p = c.prepareStatement(sql)) {
-            p.setString(1, nome); p.setString(2, telefone); p.setString(3, email); return p.executeUpdate() == 1;
+            p.setString(1, nome); 
+            p.setString(2, cpf); 
+            p.setString(3, dataNasc); 
+            p.setString(4, telefone); 
+            p.setString(5, email); 
+            p.setString(6, endereco); 
+            return p.executeUpdate() == 1;
         }
+    }
+
+    public Paciente buscarPacientePorId(int id) throws SQLException {
+        String sql = "SELECT * FROM pacientes WHERE id = ?";
+        try (Connection c = DatabaseManager.getConnection(); PreparedStatement p = c.prepareStatement(sql)) {
+            p.setInt(1, id);
+            try (ResultSet r = p.executeQuery()) {
+                if (r.next()) return new Paciente(r.getInt("id"), r.getString("nome"),
+                        r.getString("cpf"), r.getString("data_nascimento"),
+                        r.getString("telefone"), r.getString("email"), r.getString("endereco"));
+            }
+        }
+        return null;
+    }
+
+    public List<Consulta> listarConsultasPorPaciente(int pacienteId) throws SQLException {
+        List<Consulta> lista = new ArrayList<>();
+        String sql = "SELECT c.*, p.nome paciente_nome, m.nome medico_nome " +
+                     "FROM consultas c " +
+                     "JOIN pacientes p ON p.id=c.paciente_id " +
+                     "LEFT JOIN medicos m ON m.id=c.medico_id " +
+                     "WHERE c.paciente_id = ? ORDER BY c.data DESC, c.hora DESC";
+        try (Connection c = DatabaseManager.getConnection(); PreparedStatement p = c.prepareStatement(sql)) {
+            p.setInt(1, pacienteId);
+            try (ResultSet r = p.executeQuery()) {
+                while (r.next()) {
+                    lista.add(new Consulta(r.getInt("id"), r.getInt("paciente_id"),
+                        r.getString("data"), r.getString("hora"), r.getString("especialidade"),
+                        r.getString("observacao"), r.getString("status"), 
+                        r.getString("paciente_nome"), r.getString("medico_nome")));
+                }
+            }
+        }
+        return lista;
     }
 
     public List<Consulta> listarConsultas() throws SQLException {
@@ -60,6 +108,67 @@ public class ClinicaRepository {
         }
     }
 
+    public boolean atualizarStatusConsulta(int id, String novoStatus) throws SQLException {
+        String sql = "UPDATE consultas SET status = ? WHERE id = ?";
+        try (Connection c = DatabaseManager.getConnection(); PreparedStatement p = c.prepareStatement(sql)) {
+            p.setString(1, novoStatus.toUpperCase());
+            p.setInt(2, id);
+            return p.executeUpdate() == 1;
+        }
+    }
+
+    public boolean reagendarConsulta(int id, String novaData, String novaHora) throws SQLException {
+        String sql = "UPDATE consultas SET data = ?, hora = ?, status = 'AGENDADO' WHERE id = ?";
+        try (Connection c = DatabaseManager.getConnection(); PreparedStatement p = c.prepareStatement(sql)) {
+            p.setString(1, novaData);
+            p.setString(2, novaHora);
+            p.setInt(3, id);
+            return p.executeUpdate() == 1;
+        }
+    }
+
+    public List<Consulta> listarAgendaFiltrada(String dataInicio, String dataFim, String especialidade, String status) throws SQLException {
+        List<Consulta> lista = new ArrayList<>();
+        StringBuilder sql = new StringBuilder("SELECT c.id, c.paciente_id, c.data, c.hora, c.especialidade, c.observacao, c.status, p.nome paciente_nome " +
+                "FROM consultas c JOIN pacientes p ON p.id=c.paciente_id WHERE 1=1");
+        
+        if (dataInicio != null && dataFim != null) {
+            if (dataInicio.equals(dataFim)) sql.append(" AND c.data = ?");
+            else sql.append(" AND c.data BETWEEN ? AND ?");
+        } else if (dataInicio != null) {
+            sql.append(" AND c.data >= ?");
+        }
+        
+        if (especialidade != null && !especialidade.isEmpty()) sql.append(" AND c.especialidade = ?");
+        if (status != null && !status.isEmpty()) sql.append(" AND c.status = ?");
+        
+        sql.append(" ORDER BY c.data, c.hora");
+
+        try (Connection c = DatabaseManager.getConnection(); PreparedStatement p = c.prepareStatement(sql.toString())) {
+            int i = 1;
+            if (dataInicio != null && dataFim != null) {
+                p.setString(i++, dataInicio);
+                if (!dataInicio.equals(dataFim)) p.setString(i++, dataFim);
+            } else if (dataInicio != null) {
+                p.setString(i++, dataInicio);
+            }
+            
+            if (especialidade != null && !especialidade.isEmpty()) {
+                p.setString(i++, especialidade);
+            }
+            if (status != null && !status.isEmpty()) {
+                p.setString(i++, status.toUpperCase());
+            }
+
+            try (ResultSet r = p.executeQuery()) {
+                while (r.next()) lista.add(new Consulta(r.getInt("id"), r.getInt("paciente_id"),
+                        r.getString("data"), r.getString("hora"), r.getString("especialidade"),
+                        r.getString("observacao"), r.getString("status"), r.getString("paciente_nome")));
+            }
+        }
+        return lista;
+    }
+
     public List<Medico> listarCorpoClinico() throws SQLException {
         List<Medico> lista = new ArrayList<>();
         String sql = "SELECT id, nome, especialidade, crm FROM medicos ORDER BY nome";
@@ -68,6 +177,20 @@ public class ClinicaRepository {
              ResultSet r = p.executeQuery()) {
             while (r.next()) lista.add(new Medico(r.getInt("id"), r.getString("nome"),
                     r.getString("especialidade"), r.getString("crm")));
+        }
+        return lista;
+    }
+
+    public List<Medico> listarMedicosPorEspecialidade(String especialidade) throws SQLException {
+        List<Medico> lista = new ArrayList<>();
+        String sql = "SELECT id, nome, especialidade, crm FROM medicos WHERE especialidade = ? ORDER BY nome";
+        try (Connection c = DatabaseManager.getConnection();
+             PreparedStatement p = c.prepareStatement(sql)) {
+            p.setString(1, especialidade);
+            try (ResultSet r = p.executeQuery()) {
+                while (r.next()) lista.add(new Medico(r.getInt("id"), r.getString("nome"),
+                        r.getString("especialidade"), r.getString("crm")));
+            }
         }
         return lista;
     }
@@ -126,14 +249,76 @@ public class ClinicaRepository {
         }
     }
 
-    public List<Especialidade> listarEspecialidades() {
+    public List<Especialidade> listarEspecialidades() throws SQLException {
         List<Especialidade> lista = new ArrayList<>();
-        lista.add(new Especialidade(1, "Cardiologia", "Saúde do Coração", android.R.drawable.ic_menu_myplaces));
-        lista.add(new Especialidade(2, "Dermatologia", "Pele e Estética", android.R.drawable.ic_menu_camera));
-        lista.add(new Especialidade(3, "Pediatria", "Saúde Infantil", android.R.drawable.ic_menu_edit));
-        lista.add(new Especialidade(4, "Ortopedia", "Ossos e Articulações", android.R.drawable.ic_menu_manage));
-        lista.add(new Especialidade(5, "Ginecologia", "Saúde da Mulher", android.R.drawable.ic_menu_agenda));
-        lista.add(new Especialidade(6, "Oftalmologia", "Visão e Olhos", android.R.drawable.ic_menu_view));
+        // Busca especialidades únicas diretamente da tabela de médicos para garantir que sempre apareçam
+        String sql = "SELECT DISTINCT especialidade FROM medicos ORDER BY especialidade";
+        
+        try (Connection c = DatabaseManager.getConnection();
+             PreparedStatement p = c.prepareStatement(sql);
+             ResultSet r = p.executeQuery()) {
+            
+            int id = 1;
+            while (r.next()) {
+                String nome = r.getString("especialidade");
+                String desc = "Atendimento especializado em " + nome;
+                
+                // Atribuição de ícones baseada no nome
+                int icone = getIconeParaEspecialidade(nome);
+                
+                lista.add(new Especialidade(id++, nome, desc, icone));
+            }
+        }
         return lista;
+    }
+
+    private int getIconeParaEspecialidade(String nome) {
+        String n = nome.toLowerCase();
+        if (n.contains("cardio")) return android.R.drawable.ic_menu_myplaces;
+        if (n.contains("derma")) return android.R.drawable.ic_menu_camera;
+        if (n.contains("pediatra")) return android.R.drawable.ic_menu_edit;
+        if (n.contains("orto")) return android.R.drawable.ic_menu_manage;
+        if (n.contains("gineco")) return android.R.drawable.ic_menu_agenda;
+        if (n.contains("oftalmo")) return android.R.drawable.ic_menu_view;
+        return android.R.drawable.ic_menu_info_details; // Ícone genérico
+    }
+
+    public java.util.Map<String, Integer> getEstatisticasDashboard() throws SQLException {
+        java.util.Map<String, Integer> stats = new java.util.HashMap<>();
+        String hoje = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(new java.util.Date());
+
+        try (Connection c = DatabaseManager.getConnection()) {
+            // Consultas de hoje
+            try (PreparedStatement p = c.prepareStatement("SELECT COUNT(*) FROM consultas WHERE data = ?")) {
+                p.setString(1, hoje);
+                try (ResultSet r = p.executeQuery()) { if (r.next()) stats.put("hoje", r.getInt(1)); }
+            }
+            // Próximas consultas (futuras)
+            try (PreparedStatement p = c.prepareStatement("SELECT COUNT(*) FROM consultas WHERE data > ?")) {
+                p.setString(1, hoje);
+                try (ResultSet r = p.executeQuery()) { if (r.next()) stats.put("proximas", r.getInt(1)); }
+            }
+            // Confirmadas
+            try (PreparedStatement p = c.prepareStatement("SELECT COUNT(*) FROM consultas WHERE status = 'CONFIRMADO'")) {
+                try (ResultSet r = p.executeQuery()) { if (r.next()) stats.put("confirmadas", r.getInt(1)); }
+            }
+            // Pendentes (AGENDADO)
+            try (PreparedStatement p = c.prepareStatement("SELECT COUNT(*) FROM consultas WHERE status = 'AGENDADO'")) {
+                try (ResultSet r = p.executeQuery()) { if (r.next()) stats.put("pendentes", r.getInt(1)); }
+            }
+            // Canceladas
+            try (PreparedStatement p = c.prepareStatement("SELECT COUNT(*) FROM consultas WHERE status = 'CANCELADO'")) {
+                try (ResultSet r = p.executeQuery()) { if (r.next()) stats.put("canceladas", r.getInt(1)); }
+            }
+            // Total Pacientes
+            try (PreparedStatement p = c.prepareStatement("SELECT COUNT(*) FROM pacientes")) {
+                try (ResultSet r = p.executeQuery()) { if (r.next()) stats.put("pacientes", r.getInt(1)); }
+            }
+            // Total Médicos
+            try (PreparedStatement p = c.prepareStatement("SELECT COUNT(*) FROM medicos")) {
+                try (ResultSet r = p.executeQuery()) { if (r.next()) stats.put("medicos", r.getInt(1)); }
+            }
+        }
+        return stats;
     }
 }

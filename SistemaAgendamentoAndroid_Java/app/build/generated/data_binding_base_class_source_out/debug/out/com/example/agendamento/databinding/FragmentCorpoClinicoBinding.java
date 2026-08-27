@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -30,13 +31,18 @@ public final class FragmentCorpoClinicoBinding implements ViewBinding {
   @NonNull
   public final RecyclerView recyclerProfissionais;
 
+  @NonNull
+  public final TextView tvTitle;
+
   private FragmentCorpoClinicoBinding(@NonNull ConstraintLayout rootView,
       @NonNull ExtendedFloatingActionButton btnNovoProfissional,
-      @NonNull LinearLayout headerContainer, @NonNull RecyclerView recyclerProfissionais) {
+      @NonNull LinearLayout headerContainer, @NonNull RecyclerView recyclerProfissionais,
+      @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.btnNovoProfissional = btnNovoProfissional;
     this.headerContainer = headerContainer;
     this.recyclerProfissionais = recyclerProfissionais;
+    this.tvTitle = tvTitle;
   }
 
   @Override
@@ -84,8 +90,14 @@ public final class FragmentCorpoClinicoBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvTitle;
+      TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvTitle == null) {
+        break missingId;
+      }
+
       return new FragmentCorpoClinicoBinding((ConstraintLayout) rootView, btnNovoProfissional,
-          headerContainer, recyclerProfissionais);
+          headerContainer, recyclerProfissionais, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

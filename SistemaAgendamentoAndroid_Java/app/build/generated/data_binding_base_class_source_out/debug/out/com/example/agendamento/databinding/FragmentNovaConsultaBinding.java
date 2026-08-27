@@ -11,6 +11,7 @@ import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.agendamento.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -24,9 +25,6 @@ public final class FragmentNovaConsultaBinding implements ViewBinding {
   public final MaterialButton btnSalvarAgendamento;
 
   @NonNull
-  public final TextInputEditText edtClienteId;
-
-  @NonNull
   public final TextInputEditText edtData;
 
   @NonNull
@@ -36,18 +34,22 @@ public final class FragmentNovaConsultaBinding implements ViewBinding {
   public final TextInputEditText edtObservacao;
 
   @NonNull
-  public final TextInputEditText edtServico;
+  public final MaterialAutoCompleteTextView edtPacienteNome;
+
+  @NonNull
+  public final MaterialAutoCompleteTextView edtServico;
 
   private FragmentNovaConsultaBinding(@NonNull ScrollView rootView,
-      @NonNull MaterialButton btnSalvarAgendamento, @NonNull TextInputEditText edtClienteId,
-      @NonNull TextInputEditText edtData, @NonNull TextInputEditText edtHora,
-      @NonNull TextInputEditText edtObservacao, @NonNull TextInputEditText edtServico) {
+      @NonNull MaterialButton btnSalvarAgendamento, @NonNull TextInputEditText edtData,
+      @NonNull TextInputEditText edtHora, @NonNull TextInputEditText edtObservacao,
+      @NonNull MaterialAutoCompleteTextView edtPacienteNome,
+      @NonNull MaterialAutoCompleteTextView edtServico) {
     this.rootView = rootView;
     this.btnSalvarAgendamento = btnSalvarAgendamento;
-    this.edtClienteId = edtClienteId;
     this.edtData = edtData;
     this.edtHora = edtHora;
     this.edtObservacao = edtObservacao;
+    this.edtPacienteNome = edtPacienteNome;
     this.edtServico = edtServico;
   }
 
@@ -84,12 +86,6 @@ public final class FragmentNovaConsultaBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.edtClienteId;
-      TextInputEditText edtClienteId = ViewBindings.findChildViewById(rootView, id);
-      if (edtClienteId == null) {
-        break missingId;
-      }
-
       id = R.id.edtData;
       TextInputEditText edtData = ViewBindings.findChildViewById(rootView, id);
       if (edtData == null) {
@@ -108,14 +104,20 @@ public final class FragmentNovaConsultaBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.edtPacienteNome;
+      MaterialAutoCompleteTextView edtPacienteNome = ViewBindings.findChildViewById(rootView, id);
+      if (edtPacienteNome == null) {
+        break missingId;
+      }
+
       id = R.id.edtServico;
-      TextInputEditText edtServico = ViewBindings.findChildViewById(rootView, id);
+      MaterialAutoCompleteTextView edtServico = ViewBindings.findChildViewById(rootView, id);
       if (edtServico == null) {
         break missingId;
       }
 
-      return new FragmentNovaConsultaBinding((ScrollView) rootView, btnSalvarAgendamento,
-          edtClienteId, edtData, edtHora, edtObservacao, edtServico);
+      return new FragmentNovaConsultaBinding((ScrollView) rootView, btnSalvarAgendamento, edtData,
+          edtHora, edtObservacao, edtPacienteNome, edtServico);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

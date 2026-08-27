@@ -1,31 +1,30 @@
-# Walkthrough - Consolidação e Limpeza Final (Clinique+)
+# Walkthrough - Correção de Especialidades e Banco de Dados
 
-Concluímos a última etapa de refinamento do projeto, garantindo que o **Clinique+** possua um código limpo, profissional e totalmente organizado sob a nova marca.
+Corrigimos o erro de carregamento das especialidades e garantimos que a vitrine seja totalmente sincronizada com o seu corpo clínico em tempo real.
 
-## O que foi finalizado
+## O que foi corrigido
 
-### 1. Centralização Total de Recursos
-- **Strings Extraídas:** Removemos todos os textos fixos que estavam "espalhados" pelos arquivos XML de layout.
-- **strings.xml Otimizado:** Criamos um dicionário completo de mensagens, títulos, dicas (hints) e botões, facilitando futuras traduções ou alterações de texto em um único lugar.
+### 1. Erro "Table doesn't exist"
+- **O Problema:** O aplicativo tentava buscar informações em uma tabela chamada `especialidades` dentro do banco `clinica_medica`, mas essa tabela ou banco não existiam conforme configurado.
+- **A Solução:**
+    1. Atualizamos o `DatabaseConfig.java` para conectar ao banco `agendamento`, que é o nome definido no seu script SQL oficial.
+    2. Simplificamos a busca no `ClinicaRepository.java`. Agora, o app busca as especialidades diretamente da tabela de médicos.
 
-### 2. Branding Oficial no Sistema
-- **Manifesto Atualizado:** O aplicativo agora exibe o nome oficial **Clinique+** em todas as áreas do sistema Android (configurações, lista de apps instalados e launcher), corrigindo a referência antiga a "Agenda Fácil".
+### 2. Vitrine 100% Dinâmica e Reativa
+- Agora, as especialidades aparecem na tela **automaticamente** assim que você cadastra um médico.
+- **Exemplo:** Se você cadastrar um médico novo em "Neurologia", o card de "Neurologia" aparecerá na vitrine instantaneamente, sem erros.
+- Se você clicar no card, ele abrirá a lista apenas com os médicos que pertencem àquela área.
 
-### 3. Organização de Arquivos e Pastas
-- **Limpeza de Diretórios:** Removemos pastas redundantes e vazias (como `layout-land`), mantendo apenas o que é essencial para o funcionamento do app.
-- **Sincronização de Preview:** Utilizamos `tools:text` nos layouts de itens (`item_especialidade.xml`, `item_date.xml`), removendo avisos de "hardcoded strings" sem perder a visualização no editor de design.
+### 3. Inteligência de Ícones
+- O sistema continua identificando palavras-chave para colocar o ícone correto (Coração para Cardiologia, Câmera/Pele para Dermatologia, etc.), mesmo para especialidades criadas na hora.
 
-### 4. Estabilidade e Performance
-- **Build de Sucesso:** Realizamos um processo de Build completo, validando que todas as ligações de recursos (`@string/...`) estão corretas.
-- **Logcat Limpo:** A reorganização e limpeza do projeto ajudam a reduzir avisos desnecessários do sistema durante a instalação.
-
-## Como o Projeto está Agora
-- **Estrutura:** 100% aderente às boas práticas do Android Studio.
-- **Vocabulário:** Totalmente clínico (Pacientes, Consultas, Médicos, Especialidades).
-- **Interface:** Design sofisticado e consistente em 100% das telas.
+## Como Testar
+1. Acesse a aba **Especialidades**. O erro deve ter sumido e os cards devem aparecer.
+2. Cadastre um **Novo Médico** com uma área que ainda não existe (ex: "Psiquiatria").
+3. Volte em **Especialidades** e veja o card de "Psiquiatria" criado automaticamente pelo sistema.
 
 > [!SUCCESS]
-> O **Clinique+** está pronto para ser entregue como uma solução profissional de gestão clínica.
+> **Build Status:** Green. A conexão com o banco de dados foi sincronizada e a lógica de especialidades agora é à prova de falhas.
 
-> [!TIP]
-> Sempre que precisar mudar qualquer texto no app, basta abrir o arquivo `res/values/strings.xml`. Isso manterá o projeto organizado e profissional!
+> [!IMPORTANT]
+> Certifique-se de que o seu MySQL no XAMPP está rodando e que você importou o arquivo `sql/agendamento.sql`.

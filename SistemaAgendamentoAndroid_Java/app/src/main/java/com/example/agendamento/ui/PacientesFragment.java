@@ -3,6 +3,8 @@ package com.example.agendamento.ui;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,32 +12,41 @@ import com.example.agendamento.MainActivity;
 import com.example.agendamento.R;
 import com.example.agendamento.model.Paciente;
 import com.example.agendamento.repository.ClinicaRepository;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
 
 public class PacientesFragment extends Fragment {
-    public PacientesFragment(){super(R.layout.fragment_pacientes);}
+    private RecyclerView recycler;
+
+    public PacientesFragment() { super(R.layout.fragment_pacientes); }
     
-    @Override public void onViewCreated(View v, Bundle b){
-        RecyclerView r = v.findViewById(R.id.recyclerPacientes);
-        r.setLayoutManager(new LinearLayoutManager(requireContext()));
+    @Override
+    public void onViewCreated(@NonNull View v, @Nullable Bundle b) {
+        recycler = v.findViewById(R.id.recyclerPacientes);
+        recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
         
         v.findViewById(R.id.btnNovoPaciente).setOnClickListener(x -> 
             ((MainActivity)requireActivity()).abrir(new NovoPacienteFragment())
         );
 
+        carregarPacientes();
+    }
+
+    private void carregarPacientes() {
         Executors.newSingleThreadExecutor().execute(() -> {
             try {
-                ArrayList<String> list = new ArrayList<>();
-                for(Paciente p : new ClinicaRepository().listarPacientes())
-                    list.add("#" + p.getId() + " - " + p.getNome() + "\n" + p.getTelefone() + " | " + p.getEmail());
-                
+                List<Paciente> lista = new ClinicaRepository().listarPacientes();
                 if (isAdded() && getActivity() != null) {
-                    getActivity().runOnUiThread(() -> r.setAdapter(new SimpleAdapter(list)));
+                    getActivity().runOnUiThread(() -> {
+                        recycler.setAdapter(new PacienteAdapter(lista, p -> {
+                            // Ao clicar no paciente, abre o prontuário
+                            ((MainActivity)requireActivity()).abrir(new ProntuarioFragment(p.getId()));
+                        }));
+                    });
                 }
             } catch (Exception e) {
                 if (isAdded() && getActivity() != null) {
-                    getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Erro: " + e.getMessage(), Toast.LENGTH_LONG).show());
+                    getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Erro ao carregar pacientes: " + e.getMessage(), Toast.LENGTH_LONG).show());
                 }
             }
         });

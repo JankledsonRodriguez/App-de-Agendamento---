@@ -32,20 +32,20 @@
             android:layout_marginBottom="32dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/id_paciente"
+            android:hint="@string/selecione_paciente"
             app:boxCornerRadiusTopStart="16dp"
             app:boxCornerRadiusTopEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
             app:boxCornerRadiusBottomEnd="16dp"
             app:startIconDrawable="@android:drawable/ic_menu_myplaces">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtClienteId"
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/edtPacienteNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="none"
                 android:fontFamily="sans-serif-medium"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,7 +64,9 @@
                 android:id="@+id/edtData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="date"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none"
                 android:fontFamily="sans-serif-medium"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,12 +85,14 @@
                 android:id="@+id/edtHora"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="time"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none"
                 android:fontFamily="sans-serif-medium"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -98,11 +102,11 @@
             app:boxCornerRadiusBottomStart="16dp"
             app:boxCornerRadiusBottomEnd="16dp"
             app:startIconDrawable="@android:drawable/ic_menu_manage">
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:id="@+id/edtServico"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:inputType="none"
                 android:fontFamily="sans-serif-medium"/>
         </com.google.android.material.textfield.TextInputLayout>
 

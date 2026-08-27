@@ -59,15 +59,35 @@
     <string name="especialidades_medicas">Especialidades Médicas</string>
     <string name="corpo_clinico">Corpo Clínico</string>
     <string name="agenda_medica">Agenda Médica</string>
+    <string name="agenda_diaria">Diária</string>
+    <string name="agenda_semanal">Semanal</string>
+    <string name="agenda_mensal">Mensal</string>
+    <string name="filtros">Filtros</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="faltou">Faltou</string>
+    <string name="mais">Mais</string>
     <string name="faturamento_relatorios">Faturamento e Relatórios</string>
     <string name="configuracoes_clinica">Configurações da Clínica</string>
     <string name="resumo_operacional">RESUMO OPERACIONAL</string>
+    <string name="consultas_hoje">Consultas Hoje</string>
+    <string name="proximas_consultas">Próximas</string>
+    <string name="confirmadas">Confirmadas</string>
+    <string name="pendentes">Pendentes</string>
+    <string name="canceladas">Canceladas</string>
+    <string name="total_medicos">Médicos</string>
+    <string name="dados_pessoais">DADOS PESSOAIS</string>
+    <string name="historico_consultas">HISTÓRICO DE CONSULTAS</string>
+    <string name="cpf_label">CPF</string>
+    <string name="nascimento_label">Data de Nascimento</string>
+    <string name="endereco_label">Endereço Completo</string>
+    <string name="msg_paciente_sucesso">Paciente registrado com sucesso!</string>
 
     <!-- Consultas & Pacientes -->
     <string name="gerencie_historico">Gerencie o histórico e novas consultas</string>
     <string name="detalhes_atendimento">Preencha os detalhes do atendimento médico</string>
     <string name="confirmar_consulta">CONFIRMAR CONSULTA</string>
     <string name="id_paciente">ID do Paciente</string>
+    <string name="selecione_paciente">Selecione o Paciente</string>
     <string name="data_consulta_hint">Data da Consulta: AAAA-MM-DD</string>
     <string name="horario_hint">Horário: HH:MM</string>
     <string name="observacoes_medicas">Observações Médicas</string>

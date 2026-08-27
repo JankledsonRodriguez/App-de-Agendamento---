@@ -9,9 +9,15 @@ public class Consulta {
     private String observacao;
     private String status;
     private String pacienteNome;
+    private String medicoNome;
 
     public Consulta(int id, int pacienteId, String data, String hora, String especialidade,
                     String observacao, String status, String pacienteNome) {
+        this(id, pacienteId, data, hora, especialidade, observacao, status, pacienteNome, null);
+    }
+
+    public Consulta(int id, int pacienteId, String data, String hora, String especialidade,
+                    String observacao, String status, String pacienteNome, String medicoNome) {
         this.id = id;
         this.pacienteId = pacienteId;
         this.data = data;
@@ -20,6 +26,7 @@ public class Consulta {
         this.observacao = observacao;
         this.status = status;
         this.pacienteNome = pacienteNome;
+        this.medicoNome = medicoNome;
     }
 
     public int getId() { return id; }
@@ -30,4 +37,5 @@ public class Consulta {
     public String getObservacao() { return observacao; }
     public String getStatus() { return status; }
     public String getPacienteNome() { return pacienteNome; }
+    public String getMedicoNome() { return medicoNome; }
 }

@@ -8,10 +8,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.agendamento.R;
+import com.google.android.material.card.MaterialCardView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -21,25 +21,74 @@ public final class FragmentInicioBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
-  public final RecyclerView recyclerViewPacientes;
+  public final MaterialCardView cardCanceladas;
 
   @NonNull
-  public final TextView txtProximoHorario;
+  public final MaterialCardView cardConfirmadas;
 
   @NonNull
-  public final TextView txtQtdPacientes;
+  public final MaterialCardView cardHoje;
 
   @NonNull
-  public final TextView txtResumo;
+  public final MaterialCardView cardPendentes;
+
+  @NonNull
+  public final MaterialCardView cardProximas;
+
+  @NonNull
+  public final MaterialCardView cardTotalMedicos;
+
+  @NonNull
+  public final MaterialCardView cardTotalPacientes;
+
+  @NonNull
+  public final TextView txtCanceladas;
+
+  @NonNull
+  public final TextView txtConexaoStatus;
+
+  @NonNull
+  public final TextView txtConfirmadas;
+
+  @NonNull
+  public final TextView txtHoje;
+
+  @NonNull
+  public final TextView txtPendentes;
+
+  @NonNull
+  public final TextView txtProximas;
+
+  @NonNull
+  public final TextView txtTotalMedicos;
+
+  @NonNull
+  public final TextView txtTotalPacientes;
 
   private FragmentInicioBinding(@NonNull ScrollView rootView,
-      @NonNull RecyclerView recyclerViewPacientes, @NonNull TextView txtProximoHorario,
-      @NonNull TextView txtQtdPacientes, @NonNull TextView txtResumo) {
+      @NonNull MaterialCardView cardCanceladas, @NonNull MaterialCardView cardConfirmadas,
+      @NonNull MaterialCardView cardHoje, @NonNull MaterialCardView cardPendentes,
+      @NonNull MaterialCardView cardProximas, @NonNull MaterialCardView cardTotalMedicos,
+      @NonNull MaterialCardView cardTotalPacientes, @NonNull TextView txtCanceladas,
+      @NonNull TextView txtConexaoStatus, @NonNull TextView txtConfirmadas,
+      @NonNull TextView txtHoje, @NonNull TextView txtPendentes, @NonNull TextView txtProximas,
+      @NonNull TextView txtTotalMedicos, @NonNull TextView txtTotalPacientes) {
     this.rootView = rootView;
-    this.recyclerViewPacientes = recyclerViewPacientes;
-    this.txtProximoHorario = txtProximoHorario;
-    this.txtQtdPacientes = txtQtdPacientes;
-    this.txtResumo = txtResumo;
+    this.cardCanceladas = cardCanceladas;
+    this.cardConfirmadas = cardConfirmadas;
+    this.cardHoje = cardHoje;
+    this.cardPendentes = cardPendentes;
+    this.cardProximas = cardProximas;
+    this.cardTotalMedicos = cardTotalMedicos;
+    this.cardTotalPacientes = cardTotalPacientes;
+    this.txtCanceladas = txtCanceladas;
+    this.txtConexaoStatus = txtConexaoStatus;
+    this.txtConfirmadas = txtConfirmadas;
+    this.txtHoje = txtHoje;
+    this.txtPendentes = txtPendentes;
+    this.txtProximas = txtProximas;
+    this.txtTotalMedicos = txtTotalMedicos;
+    this.txtTotalPacientes = txtTotalPacientes;
   }
 
   @Override
@@ -69,32 +118,100 @@ public final class FragmentInicioBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.recyclerViewPacientes;
-      RecyclerView recyclerViewPacientes = ViewBindings.findChildViewById(rootView, id);
-      if (recyclerViewPacientes == null) {
+      id = R.id.cardCanceladas;
+      MaterialCardView cardCanceladas = ViewBindings.findChildViewById(rootView, id);
+      if (cardCanceladas == null) {
         break missingId;
       }
 
-      id = R.id.txtProximoHorario;
-      TextView txtProximoHorario = ViewBindings.findChildViewById(rootView, id);
-      if (txtProximoHorario == null) {
+      id = R.id.cardConfirmadas;
+      MaterialCardView cardConfirmadas = ViewBindings.findChildViewById(rootView, id);
+      if (cardConfirmadas == null) {
         break missingId;
       }
 
-      id = R.id.txtQtdPacientes;
-      TextView txtQtdPacientes = ViewBindings.findChildViewById(rootView, id);
-      if (txtQtdPacientes == null) {
+      id = R.id.cardHoje;
+      MaterialCardView cardHoje = ViewBindings.findChildViewById(rootView, id);
+      if (cardHoje == null) {
         break missingId;
       }
 
-      id = R.id.txtResumo;
-      TextView txtResumo = ViewBindings.findChildViewById(rootView, id);
-      if (txtResumo == null) {
+      id = R.id.cardPendentes;
+      MaterialCardView cardPendentes = ViewBindings.findChildViewById(rootView, id);
+      if (cardPendentes == null) {
         break missingId;
       }
 
-      return new FragmentInicioBinding((ScrollView) rootView, recyclerViewPacientes,
-          txtProximoHorario, txtQtdPacientes, txtResumo);
+      id = R.id.cardProximas;
+      MaterialCardView cardProximas = ViewBindings.findChildViewById(rootView, id);
+      if (cardProximas == null) {
+        break missingId;
+      }
+
+      id = R.id.cardTotalMedicos;
+      MaterialCardView cardTotalMedicos = ViewBindings.findChildViewById(rootView, id);
+      if (cardTotalMedicos == null) {
+        break missingId;
+      }
+
+      id = R.id.cardTotalPacientes;
+      MaterialCardView cardTotalPacientes = ViewBindings.findChildViewById(rootView, id);
+      if (cardTotalPacientes == null) {
+        break missingId;
+      }
+
+      id = R.id.txtCanceladas;
+      TextView txtCanceladas = ViewBindings.findChildViewById(rootView, id);
+      if (txtCanceladas == null) {
+        break missingId;
+      }
+
+      id = R.id.txtConexaoStatus;
+      TextView txtConexaoStatus = ViewBindings.findChildViewById(rootView, id);
+      if (txtConexaoStatus == null) {
+        break missingId;
+      }
+
+      id = R.id.txtConfirmadas;
+      TextView txtConfirmadas = ViewBindings.findChildViewById(rootView, id);
+      if (txtConfirmadas == null) {
+        break missingId;
+      }
+
+      id = R.id.txtHoje;
+      TextView txtHoje = ViewBindings.findChildViewById(rootView, id);
+      if (txtHoje == null) {
+        break missingId;
+      }
+
+      id = R.id.txtPendentes;
+      TextView txtPendentes = ViewBindings.findChildViewById(rootView, id);
+      if (txtPendentes == null) {
+        break missingId;
+      }
+
+      id = R.id.txtProximas;
+      TextView txtProximas = ViewBindings.findChildViewById(rootView, id);
+      if (txtProximas == null) {
+        break missingId;
+      }
+
+      id = R.id.txtTotalMedicos;
+      TextView txtTotalMedicos = ViewBindings.findChildViewById(rootView, id);
+      if (txtTotalMedicos == null) {
+        break missingId;
+      }
+
+      id = R.id.txtTotalPacientes;
+      TextView txtTotalPacientes = ViewBindings.findChildViewById(rootView, id);
+      if (txtTotalPacientes == null) {
+        break missingId;
+      }
+
+      return new FragmentInicioBinding((ScrollView) rootView, cardCanceladas, cardConfirmadas,
+          cardHoje, cardPendentes, cardProximas, cardTotalMedicos, cardTotalPacientes,
+          txtCanceladas, txtConexaoStatus, txtConfirmadas, txtHoje, txtPendentes, txtProximas,
+          txtTotalMedicos, txtTotalPacientes);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

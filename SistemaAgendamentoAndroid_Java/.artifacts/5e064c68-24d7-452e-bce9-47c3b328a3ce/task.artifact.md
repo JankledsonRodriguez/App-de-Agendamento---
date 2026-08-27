@@ -1,7 +1,4 @@
-# Tarefas: Limpeza e Branding Final
-
-- [x] Centralizar strings em `strings.xml`
-- [x] Atualizar `AndroidManifest.xml` (Rótulo oficial do App)
-- [x] Limpar strings fixas nos arquivos de Layout
-- [x] Remover pastas vazias residuais
-- [x] Validar compilação e gerar Walkthrough
+- [x] Modificar `listarEspecialidades` em `ClinicaRepository.java` para consultar o banco (SELECT DISTINCT)
+- [x] Atualizar `EspecialidadesFragment.java` para carregar dados assincronamente
+- [x] Validar criação automática de cards ao adicionar novo médico
+- [x] Gerar Walkthrough final

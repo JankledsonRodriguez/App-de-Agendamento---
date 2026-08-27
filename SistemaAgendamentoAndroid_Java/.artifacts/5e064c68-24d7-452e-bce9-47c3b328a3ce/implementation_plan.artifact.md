@@ -1,44 +1,30 @@
-# Plano de Limpeza Final e Consolidação de Branding (Clinique+)
+# Plano de Implementação: Especialidades Dinâmicas
 
-Este plano visa realizar a última etapa de "limpeza" do projeto, removendo redundâncias, centralizando recursos de texto e corrigindo inconsistências de marca remanescentes, conforme as mensagens de erro e o logcat apresentados.
-
-## User Review Required
-
-> [!IMPORTANT]
-> Vou mover todas as mensagens de texto que ainda estão "soltas" nos arquivos de layout para o arquivo central `strings.xml`. Isso resolve avisos do Android Studio e organiza melhor o projeto. Também atualizarei o nome oficial do app no sistema (Manifest) para **Clinique+**.
+Este plano visa sincronizar a tela de "Especialidades" com os médicos realmente cadastrados no sistema. A lista deixará de ser fixa e passará a ser gerada automaticamente a partir das áreas de atuação dos médicos no corpo clínico.
 
 ## Proposed Changes
 
-### [Recursos Globais]
+### [Repositório]
 
-#### [MODIFY] [strings.xml](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/res/values/strings.xml)
-- Adicionar todas as novas strings extraídas dos layouts de cadastro e login.
-- Padronizar os nomes de recursos para o domínio médico.
-
-#### [MODIFY] [AndroidManifest.xml](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/AndroidManifest.xml)
-- Alterar `android:label` para `@string/app_name` (Clinique+), corrigindo a última referência a "Agenda Fácil".
-
----
-
-### [Refatoração de Layouts]
-
-#### [MODIFY] Todos os Arquivos XML em `res/layout`
-- Substituir textos fixos por referências `@string/...`. Isso inclui:
-    - Botões de "Finalizar Cadastro".
-    - Dicas (hints) de campos como "CRM" e "Especialidade".
-    - Títulos de telas como "Verificação" e "Recuperação".
+#### [MODIFY] [ClinicaRepository.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/repository/ClinicaRepository.java)
+- Alterar o método `listarEspecialidades()` para:
+    - Realizar um `SELECT DISTINCT especialidade FROM medicos`.
+    - Cruzar esses nomes com a tabela `especialidades` para obter descrições e ícones (se existirem).
+    - Se uma especialidade de um médico não estiver na tabela de referências, usar uma descrição padrão (ex: "Atendimento Especializado") e um ícone genérico.
 
 ---
 
-### [Limpeza de Arquivos]
+### [Lógica de UI]
 
-#### [DELETE] Pastas Vazias e Temporárias
-- Remover pastas físicas redundantes se encontradas (como `layout-land` vazia).
-- Garantir que não existam classes duplicadas em pacotes de teste que possam confundir a visualização do IDE.
+#### [MODIFY] [EspecialidadesFragment.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/ui/EspecialidadesFragment.java)
+- Atualizar para carregar a lista de forma assíncrona (usando `Executors`), já que agora faremos uma consulta real ao banco de dados MySQL.
+- Garantir que a lista se atualize sempre que a tela for aberta, refletindo novos médicos cadastrados instantaneamente.
 
 ## Verification Plan
 
 ### Manual Verification
-1. Abrir o `AndroidManifest.xml` e verificar se o nome do app está correto.
-2. Abrir qualquer layout e confirmar que não há mais "hardcoded strings" (textos em amarelo).
-3. Executar um **Rebuild Project** para garantir que a compactação e alinhamento do pacote (zipalign) sejam refeitos, o que deve mitigar os erros de `PackageManager` no Logcat.
+1. Abrir a aba **Especialidades** e notar as áreas atuais.
+2. Cadastrar um **Novo Médico** com uma especialidade inédita (ex: "Neurologia").
+3. Voltar para a aba **Especialidades**.
+4. Verificar se o card de "Neurologia" apareceu automaticamente na lista.
+5. Clicar no novo card e confirmar se o médico cadastrado aparece na listagem filtrada.

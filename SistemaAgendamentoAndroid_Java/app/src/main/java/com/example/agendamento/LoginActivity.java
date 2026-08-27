@@ -1,5 +1,6 @@
 package com.example.agendamento;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.*;
@@ -19,7 +20,8 @@ public class LoginActivity extends AppCompatActivity {
                 boolean ok=new ClinicaRepository().login(email.getText().toString(),senha.getText().toString());
                 runOnUiThread(() -> {
                     if(ok){startActivity(new Intent(this,MainActivity.class));finish();}
-                    else Toast.makeText(this,"Login inválido",Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(this,"Login inválido",Toast.LENGTH_SHORT).show();
                 });
             }catch(Exception e){runOnUiThread(() -> Toast.makeText(this,"Erro MySQL: "+e.getMessage(),Toast.LENGTH_LONG).show());}
         }));
