@@ -4,10 +4,12 @@ package com.example.agendamento.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.agendamento.R;
@@ -19,7 +21,10 @@ import java.lang.String;
 
 public final class FragmentInicioBinding implements ViewBinding {
   @NonNull
-  private final ScrollView rootView;
+  private final ConstraintLayout rootView;
+
+  @NonNull
+  public final FrameLayout btnThemeToggle;
 
   @NonNull
   public final MaterialCardView cardCanceladas;
@@ -46,6 +51,12 @@ public final class FragmentInicioBinding implements ViewBinding {
   public final ShapeableImageView imgPerfilMedico;
 
   @NonNull
+  public final LinearLayout layoutDay;
+
+  @NonNull
+  public final LinearLayout layoutNight;
+
+  @NonNull
   public final TextView txtCanceladas;
 
   @NonNull
@@ -69,16 +80,18 @@ public final class FragmentInicioBinding implements ViewBinding {
   @NonNull
   public final TextView txtTotalPacientes;
 
-  private FragmentInicioBinding(@NonNull ScrollView rootView,
-      @NonNull MaterialCardView cardCanceladas, @NonNull MaterialCardView cardConfirmadas,
-      @NonNull MaterialCardView cardHoje, @NonNull MaterialCardView cardPendentes,
-      @NonNull MaterialCardView cardProximas, @NonNull MaterialCardView cardTotalMedicos,
-      @NonNull MaterialCardView cardTotalPacientes, @NonNull ShapeableImageView imgPerfilMedico,
-      @NonNull TextView txtCanceladas, @NonNull TextView txtConexaoStatus,
-      @NonNull TextView txtConfirmadas, @NonNull TextView txtHoje, @NonNull TextView txtPendentes,
-      @NonNull TextView txtProximas, @NonNull TextView txtTotalMedicos,
-      @NonNull TextView txtTotalPacientes) {
+  private FragmentInicioBinding(@NonNull ConstraintLayout rootView,
+      @NonNull FrameLayout btnThemeToggle, @NonNull MaterialCardView cardCanceladas,
+      @NonNull MaterialCardView cardConfirmadas, @NonNull MaterialCardView cardHoje,
+      @NonNull MaterialCardView cardPendentes, @NonNull MaterialCardView cardProximas,
+      @NonNull MaterialCardView cardTotalMedicos, @NonNull MaterialCardView cardTotalPacientes,
+      @NonNull ShapeableImageView imgPerfilMedico, @NonNull LinearLayout layoutDay,
+      @NonNull LinearLayout layoutNight, @NonNull TextView txtCanceladas,
+      @NonNull TextView txtConexaoStatus, @NonNull TextView txtConfirmadas,
+      @NonNull TextView txtHoje, @NonNull TextView txtPendentes, @NonNull TextView txtProximas,
+      @NonNull TextView txtTotalMedicos, @NonNull TextView txtTotalPacientes) {
     this.rootView = rootView;
+    this.btnThemeToggle = btnThemeToggle;
     this.cardCanceladas = cardCanceladas;
     this.cardConfirmadas = cardConfirmadas;
     this.cardHoje = cardHoje;
@@ -87,6 +100,8 @@ public final class FragmentInicioBinding implements ViewBinding {
     this.cardTotalMedicos = cardTotalMedicos;
     this.cardTotalPacientes = cardTotalPacientes;
     this.imgPerfilMedico = imgPerfilMedico;
+    this.layoutDay = layoutDay;
+    this.layoutNight = layoutNight;
     this.txtCanceladas = txtCanceladas;
     this.txtConexaoStatus = txtConexaoStatus;
     this.txtConfirmadas = txtConfirmadas;
@@ -99,7 +114,7 @@ public final class FragmentInicioBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ScrollView getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -124,6 +139,12 @@ public final class FragmentInicioBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnThemeToggle;
+      FrameLayout btnThemeToggle = ViewBindings.findChildViewById(rootView, id);
+      if (btnThemeToggle == null) {
+        break missingId;
+      }
+
       id = R.id.cardCanceladas;
       MaterialCardView cardCanceladas = ViewBindings.findChildViewById(rootView, id);
       if (cardCanceladas == null) {
@@ -169,6 +190,18 @@ public final class FragmentInicioBinding implements ViewBinding {
       id = R.id.imgPerfilMedico;
       ShapeableImageView imgPerfilMedico = ViewBindings.findChildViewById(rootView, id);
       if (imgPerfilMedico == null) {
+        break missingId;
+      }
+
+      id = R.id.layoutDay;
+      LinearLayout layoutDay = ViewBindings.findChildViewById(rootView, id);
+      if (layoutDay == null) {
+        break missingId;
+      }
+
+      id = R.id.layoutNight;
+      LinearLayout layoutNight = ViewBindings.findChildViewById(rootView, id);
+      if (layoutNight == null) {
         break missingId;
       }
 
@@ -220,10 +253,11 @@ public final class FragmentInicioBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentInicioBinding((ScrollView) rootView, cardCanceladas, cardConfirmadas,
-          cardHoje, cardPendentes, cardProximas, cardTotalMedicos, cardTotalPacientes,
-          imgPerfilMedico, txtCanceladas, txtConexaoStatus, txtConfirmadas, txtHoje, txtPendentes,
-          txtProximas, txtTotalMedicos, txtTotalPacientes);
+      return new FragmentInicioBinding((ConstraintLayout) rootView, btnThemeToggle, cardCanceladas,
+          cardConfirmadas, cardHoje, cardPendentes, cardProximas, cardTotalMedicos,
+          cardTotalPacientes, imgPerfilMedico, layoutDay, layoutNight, txtCanceladas,
+          txtConexaoStatus, txtConfirmadas, txtHoje, txtPendentes, txtProximas, txtTotalMedicos,
+          txtTotalPacientes);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

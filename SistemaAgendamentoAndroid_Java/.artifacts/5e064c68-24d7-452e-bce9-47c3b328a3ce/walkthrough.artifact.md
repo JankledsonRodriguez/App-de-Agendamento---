@@ -1,28 +1,30 @@
-# Walkthrough - Padronização do Corpo Clínico em Grade
+# Walkthrough - Relocação do Seletor de Tema e Correção de Cores
 
-Concluímos a padronização visual da tela de "Corpo Clínico", que agora utiliza o layout de grade de duas colunas, mantendo a consistência com as abas de Pacientes e Consultas.
+Otimizamos o sistema de temas do Clinique+, movendo o seletor para um local estratégico e corrigindo problemas de visibilidade no Modo Escuro.
 
-## O que foi alterado
+## O que foi finalizado
 
-### 1. Novo Design de Card Médico
-- **item_medico.xml:** Criamos um layout de card exclusivo para os profissionais.
-- **Identidade Visual:** Incluímos um ícone de perfil médico em destaque no topo, com o nome do médico em negrito e as informações de Especialidade e CRM organizadas logo abaixo.
-- **Material 3:** O card utiliza cantos arredondados e cores semânticas que se adaptam automaticamente ao Modo Escuro/Claro.
+### 1. Relocação do Botão de Tema
+- **O Problema:** O botão flutuante na `MainActivity` estava obstruindo informações importantes nas listas de pacientes e consultas.
+- **A Solução:** Removemos o botão global e o inserimos **exclusivamente na tela de Início (Painel)**.
+- **Posicionamento:** O botão de "pílula" (Day/Night Mode) agora fica fixo no **canto inferior direito** apenas da tela inicial, garantindo que as outras abas fiquem totalmente limpas.
 
-### 2. Estrutura em Grade (Grid)
-- **GridLayoutManager:** Atualizamos o `CorpoClinicoFragment.java` para organizar os médicos em 2 colunas horizontais que seguem verticalmente.
-- **MedicoAdapter:** Implementamos um novo adaptador inteligente para gerenciar os dados dos médicos, substituindo o adaptador de texto simples anterior.
+### 2. Correção de Cores (Dark Mode)
+- **O Problema:** Títulos como "Gestão da Clínica", "Pacientes" e a saudação "Olá, Dr." permaneciam pretos no Modo Escuro, tornando-os ilegíveis.
+- **A Solução:** Atualizamos todos os fragmentos para utilizarem cores dinâmicas (`@color/textPrimary` e `@color/textSecondary`).
+- **Resultado:** No Modo Escuro, todos esses textos agora mudam automaticamente para **Branco/Cinza Claro**, proporcionando contraste perfeito.
 
-### 3. Sincronização de Dados
-- A grade agora carrega os objetos `Medico` completos do banco de dados, garantindo que as informações de CRM e Especialidade sejam exibidas corretamente em cada card.
+### 3. Limpeza e Estabilidade
+- Removemos a lógica de tema da `MainActivity.java` e a centralizamos no `InicioFragment.java`.
+- Realizamos um build completo para validar que a alternância manual de tema continua funcionando globalmente para todo o app.
 
 ## Como Visualizar
-1. Acesse o Menu e clique em **Corpo Clínico**.
-2. Note que os médicos agora aparecem em pares, lado a lado.
-3. Se você usar o filtro de **Especialidades**, a visualização em grade será mantida apenas para os especialistas daquela área.
+1. Navegue pelas abas **Consultas** e **Pacientes**: Note que não há mais botões obstruindo a visão.
+2. Vá para o **Início**: O seletor de tema aparecerá no canto inferior direito.
+3. Clique para alternar: Observe que os títulos agora ficam brancos no modo noturno, corrigindo a falha anterior.
 
 > [!SUCCESS]
-> **Build Status:** Green. O aplicativo agora possui uma linguagem visual 100% consistente em todos os seus módulos principais.
+> **Build Status:** Green. O Clinique+ está agora mais limpo, funcional e com visual noturno 100% corrigido.
 
 > [!TIP]
-> O formato em grade facilita a comparação visual entre os especialistas disponíveis na clínica.
+> Essa mudança torna o uso do app muito mais agradável em recepções que precisam consultar listas longas de pacientes.

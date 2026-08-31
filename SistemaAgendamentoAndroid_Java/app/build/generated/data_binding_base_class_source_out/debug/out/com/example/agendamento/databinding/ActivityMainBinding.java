@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -25,27 +24,13 @@ public final class ActivityMainBinding implements ViewBinding {
   public final BottomNavigationView bottomNavigation;
 
   @NonNull
-  public final FrameLayout btnThemeToggle;
-
-  @NonNull
   public final FrameLayout container;
 
-  @NonNull
-  public final LinearLayout layoutDay;
-
-  @NonNull
-  public final LinearLayout layoutNight;
-
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull BottomNavigationView bottomNavigation, @NonNull FrameLayout btnThemeToggle,
-      @NonNull FrameLayout container, @NonNull LinearLayout layoutDay,
-      @NonNull LinearLayout layoutNight) {
+      @NonNull BottomNavigationView bottomNavigation, @NonNull FrameLayout container) {
     this.rootView = rootView;
     this.bottomNavigation = bottomNavigation;
-    this.btnThemeToggle = btnThemeToggle;
     this.container = container;
-    this.layoutDay = layoutDay;
-    this.layoutNight = layoutNight;
   }
 
   @Override
@@ -81,32 +66,13 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.btnThemeToggle;
-      FrameLayout btnThemeToggle = ViewBindings.findChildViewById(rootView, id);
-      if (btnThemeToggle == null) {
-        break missingId;
-      }
-
       id = R.id.container;
       FrameLayout container = ViewBindings.findChildViewById(rootView, id);
       if (container == null) {
         break missingId;
       }
 
-      id = R.id.layoutDay;
-      LinearLayout layoutDay = ViewBindings.findChildViewById(rootView, id);
-      if (layoutDay == null) {
-        break missingId;
-      }
-
-      id = R.id.layoutNight;
-      LinearLayout layoutNight = ViewBindings.findChildViewById(rootView, id);
-      if (layoutNight == null) {
-        break missingId;
-      }
-
-      return new ActivityMainBinding((ConstraintLayout) rootView, bottomNavigation, btnThemeToggle,
-          container, layoutDay, layoutNight);
+      return new ActivityMainBinding((ConstraintLayout) rootView, bottomNavigation, container);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

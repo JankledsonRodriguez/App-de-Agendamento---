@@ -1,11 +1,14 @@
 package com.example.agendamento.ui;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import com.example.agendamento.MainActivity;
 import com.example.agendamento.R;
@@ -19,11 +22,14 @@ import java.util.concurrent.Executors;
 
 public class InicioFragment extends Fragment {
     private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+    private SharedPreferences prefs;
 
     public InicioFragment() { super(R.layout.fragment_inicio); }
 
     @Override
     public void onViewCreated(@NonNull View v, @Nullable Bundle b) {
+        prefs = requireActivity().getSharedPreferences("CliniquePrefs", Context.MODE_PRIVATE);
+        
         TextView txtHoje = v.findViewById(R.id.txtHoje);
         TextView txtProximas = v.findViewById(R.id.txtProximas);
         TextView txtConfirmadas = v.findViewById(R.id.txtConfirmadas);
@@ -59,7 +65,34 @@ public class InicioFragment extends Fragment {
         v.findViewById(R.id.cardTotalMedicos).setOnClickListener(x -> 
             activity.abrir(new CorpoClinicoFragment()));
 
+        setupThemeToggle(v);
         carregarEstatisticas(txtHoje, txtProximas, txtConfirmadas, txtPendentes, txtCanceladas, txtTotalPacientes, txtTotalMedicos);
+    }
+
+    private void setupThemeToggle(View v) {
+        View btnToggle = v.findViewById(R.id.btnThemeToggle);
+        View layoutDay = v.findViewById(R.id.layoutDay);
+        View layoutNight = v.findViewById(R.id.layoutNight);
+
+        boolean isDark = prefs.getBoolean("dark_mode", false);
+        if (isDark) {
+            layoutDay.setVisibility(View.GONE);
+            layoutNight.setVisibility(View.VISIBLE);
+        } else {
+            layoutDay.setVisibility(View.VISIBLE);
+            layoutNight.setVisibility(View.GONE);
+        }
+
+        btnToggle.setOnClickListener(x -> {
+            boolean currentMode = prefs.getBoolean("dark_mode", false);
+            prefs.edit().putBoolean("dark_mode", !currentMode).apply();
+            
+            if (!currentMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+        });
     }
 
     private void carregarEstatisticas(TextView hoje, TextView prox, TextView conf, TextView pend, TextView canc, TextView pac, TextView med) {

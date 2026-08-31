@@ -2,7 +2,6 @@ package com.example.agendamento;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
@@ -27,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setupNavigation();
-        setupThemeToggle();
     }
 
     private void applyTheme() {
@@ -54,33 +52,6 @@ public class MainActivity extends AppCompatActivity {
             bottomNav.setSelectedItemId(R.id.navInicio);
             abrir(new InicioFragment());
         }
-    }
-
-    private void setupThemeToggle() {
-        View btnToggle = findViewById(R.id.btnThemeToggle);
-        View layoutDay = findViewById(R.id.layoutDay);
-        View layoutNight = findViewById(R.id.layoutNight);
-
-        boolean isDark = prefs.getBoolean("dark_mode", false);
-        if (isDark) {
-            layoutDay.setVisibility(View.GONE);
-            layoutNight.setVisibility(View.VISIBLE);
-        } else {
-            layoutDay.setVisibility(View.VISIBLE);
-            layoutNight.setVisibility(View.GONE);
-        }
-
-        btnToggle.setOnClickListener(v -> {
-            boolean currentMode = prefs.getBoolean("dark_mode", false);
-            prefs.edit().putBoolean("dark_mode", !currentMode).apply();
-            
-            // Re-aplicar o tema (isso reiniciará a activity)
-            if (!currentMode) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            }
-        });
     }
 
     public void abrir(Fragment f) {
