@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FA">
+    android:background="@color/backgroundColor">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -13,7 +13,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="56dp"
         android:text="@string/pacientes"
-        android:textColor="#1A1C1E"
+        android:textColor="@color/textPrimary"
         android:textSize="34sp"
         android:fontFamily="sans-serif-black"
         android:letterSpacing="-0.04"
@@ -54,6 +54,11 @@
         android:clipToPadding="false"
         android:paddingHorizontal="16dp"
         android:paddingBottom="100dp"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:overScrollMode="always"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FA">
+    android:background="@color/backgroundColor">
 
     <View
         android:id="@+id/topView"
@@ -43,7 +43,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="32dp"
                 android:text="@string/portal_medico"
-                android:textColor="#6C757D"
+                android:textColor="@color/textSecondary"
                 android:textSize="15sp"
                 android:fontFamily="sans-serif-medium" />
 
@@ -120,7 +120,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/nao_tem_conta"
                 android:textAllCaps="false"
-                android:textColor="#6C757D"
+                android:textColor="@color/textSecondary"
                 android:textSize="14sp"
                 android:fontFamily="sans-serif-medium" />
 

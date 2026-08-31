@@ -12,6 +12,7 @@ import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.agendamento.R;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.imageview.ShapeableImageView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -42,6 +43,9 @@ public final class FragmentInicioBinding implements ViewBinding {
   public final MaterialCardView cardTotalPacientes;
 
   @NonNull
+  public final ShapeableImageView imgPerfilMedico;
+
+  @NonNull
   public final TextView txtCanceladas;
 
   @NonNull
@@ -69,10 +73,11 @@ public final class FragmentInicioBinding implements ViewBinding {
       @NonNull MaterialCardView cardCanceladas, @NonNull MaterialCardView cardConfirmadas,
       @NonNull MaterialCardView cardHoje, @NonNull MaterialCardView cardPendentes,
       @NonNull MaterialCardView cardProximas, @NonNull MaterialCardView cardTotalMedicos,
-      @NonNull MaterialCardView cardTotalPacientes, @NonNull TextView txtCanceladas,
-      @NonNull TextView txtConexaoStatus, @NonNull TextView txtConfirmadas,
-      @NonNull TextView txtHoje, @NonNull TextView txtPendentes, @NonNull TextView txtProximas,
-      @NonNull TextView txtTotalMedicos, @NonNull TextView txtTotalPacientes) {
+      @NonNull MaterialCardView cardTotalPacientes, @NonNull ShapeableImageView imgPerfilMedico,
+      @NonNull TextView txtCanceladas, @NonNull TextView txtConexaoStatus,
+      @NonNull TextView txtConfirmadas, @NonNull TextView txtHoje, @NonNull TextView txtPendentes,
+      @NonNull TextView txtProximas, @NonNull TextView txtTotalMedicos,
+      @NonNull TextView txtTotalPacientes) {
     this.rootView = rootView;
     this.cardCanceladas = cardCanceladas;
     this.cardConfirmadas = cardConfirmadas;
@@ -81,6 +86,7 @@ public final class FragmentInicioBinding implements ViewBinding {
     this.cardProximas = cardProximas;
     this.cardTotalMedicos = cardTotalMedicos;
     this.cardTotalPacientes = cardTotalPacientes;
+    this.imgPerfilMedico = imgPerfilMedico;
     this.txtCanceladas = txtCanceladas;
     this.txtConexaoStatus = txtConexaoStatus;
     this.txtConfirmadas = txtConfirmadas;
@@ -160,6 +166,12 @@ public final class FragmentInicioBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.imgPerfilMedico;
+      ShapeableImageView imgPerfilMedico = ViewBindings.findChildViewById(rootView, id);
+      if (imgPerfilMedico == null) {
+        break missingId;
+      }
+
       id = R.id.txtCanceladas;
       TextView txtCanceladas = ViewBindings.findChildViewById(rootView, id);
       if (txtCanceladas == null) {
@@ -210,8 +222,8 @@ public final class FragmentInicioBinding implements ViewBinding {
 
       return new FragmentInicioBinding((ScrollView) rootView, cardCanceladas, cardConfirmadas,
           cardHoje, cardPendentes, cardProximas, cardTotalMedicos, cardTotalPacientes,
-          txtCanceladas, txtConexaoStatus, txtConfirmadas, txtHoje, txtPendentes, txtProximas,
-          txtTotalMedicos, txtTotalPacientes);
+          imgPerfilMedico, txtCanceladas, txtConexaoStatus, txtConfirmadas, txtHoje, txtPendentes,
+          txtProximas, txtTotalMedicos, txtTotalPacientes);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

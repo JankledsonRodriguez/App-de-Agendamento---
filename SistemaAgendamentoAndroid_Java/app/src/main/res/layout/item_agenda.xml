@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
-                android:textColor="#1A1C1E"
+                android:textColor="@color/textPrimary"
                 android:textSize="18sp"
                 tools:text="08:30" />
             <TextView
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-bold"
-                android:textColor="#212529"
+                android:textColor="@color/textPrimary"
                 android:textSize="15sp"
                 tools:text="Carlos Eduardo" />
             <TextView
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:textColor="#6C757D"
+                android:textColor="@color/textSecondary"
                 android:textSize="12sp"
                 tools:text="Ortopedia" />
         </LinearLayout>

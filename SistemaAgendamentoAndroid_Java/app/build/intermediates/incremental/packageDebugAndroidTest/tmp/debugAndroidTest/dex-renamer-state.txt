@@ -1,0 +1,4 @@
+#Mon Aug 31 10:02:57 BRT 2026
+base.0=C\:\\Users\\jankledson59266826\\AndroidStudioProjects\\App-de-Agendamento---\\SistemaAgendamentoAndroid_Java\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\0\\classes.dex
+path.0=0/classes.dex
+renamed.0=classes.dex

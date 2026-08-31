@@ -1,30 +1,35 @@
-# Plano de Implementação: Especialidades Dinâmicas
+# Plano de Implementação: Layout em Grade para Corpo Clínico
 
-Este plano visa sincronizar a tela de "Especialidades" com os médicos realmente cadastrados no sistema. A lista deixará de ser fixa e passará a ser gerada automaticamente a partir das áreas de atuação dos médicos no corpo clínico.
+Este plano visa padronizar a visualização do "Corpo Clínico" com o design de grade de 2 colunas já utilizado em Pacientes e Consultas, substituindo a lista simples por cards médicos profissionais.
 
 ## Proposed Changes
 
-### [Repositório]
+### [Layouts de Item]
 
-#### [MODIFY] [ClinicaRepository.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/repository/ClinicaRepository.java)
-- Alterar o método `listarEspecialidades()` para:
-    - Realizar um `SELECT DISTINCT especialidade FROM medicos`.
-    - Cruzar esses nomes com a tabela `especialidades` para obter descrições e ícones (se existirem).
-    - Se uma especialidade de um médico não estiver na tabela de referências, usar uma descrição padrão (ex: "Atendimento Especializado") e um ícone genérico.
+#### [NEW] [item_medico.xml](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/res/layout/item_medico.xml)
+- Criar um card elegante para os médicos.
+- **Ícone:** Círculo azul com ícone de profissional de saúde.
+- **Nome:** Nome do médico em destaque (negrito).
+- **Especialidade:** Texto secundário com a área de atuação.
+- **CRM:** Número de registro profissional.
 
 ---
 
 ### [Lógica de UI]
 
-#### [MODIFY] [EspecialidadesFragment.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/ui/EspecialidadesFragment.java)
-- Atualizar para carregar a lista de forma assíncrona (usando `Executors`), já que agora faremos uma consulta real ao banco de dados MySQL.
-- Garantir que a lista se atualize sempre que a tela for aberta, refletindo novos médicos cadastrados instantaneamente.
+#### [NEW] [MedicoAdapter.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/ui/MedicoAdapter.java)
+- Adaptador específico para a classe `Medico`.
+- Substituir o uso do `SimpleAdapter` genérico.
+
+#### [MODIFY] [CorpoClinicoFragment.java](file:///C:/Users/jankledson59266826/AndroidStudioProjects/App-de-Agendamento---/SistemaAgendamentoAndroid_Java/app/src/main/java/com/example/agendamento/ui/CorpoClinicoFragment.java)
+- Trocar `LinearLayoutManager` por `GridLayoutManager(requireContext(), 2)`.
+- Atualizar a lógica de carregamento para instanciar o novo `MedicoAdapter`.
+- Remover a concatenação manual de strings que era enviada para o `SimpleAdapter`.
 
 ## Verification Plan
 
 ### Manual Verification
-1. Abrir a aba **Especialidades** e notar as áreas atuais.
-2. Cadastrar um **Novo Médico** com uma especialidade inédita (ex: "Neurologia").
-3. Voltar para a aba **Especialidades**.
-4. Verificar se o card de "Neurologia" apareceu automaticamente na lista.
-5. Clicar no novo card e confirmar se o médico cadastrado aparece na listagem filtrada.
+1. Abrir a aba **Corpo Clínico** (ou via Menu).
+2. Verificar se a lista agora aparece em 2 colunas.
+3. Validar se os nomes, especialidades e CRMs estão bem distribuídos nos novos cards.
+4. Testar o filtro por especialidade (vindo da tela de Especialidades) para garantir que a grade se mantém correta.

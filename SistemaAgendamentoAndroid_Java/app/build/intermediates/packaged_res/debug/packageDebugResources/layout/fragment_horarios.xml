@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="@string/titulo_horarios"
-                android:textColor="#1A1C1E"
+                android:textColor="@color/textPrimary"
                 android:textSize="34sp"
                 android:fontFamily="sans-serif-black"
                 android:letterSpacing="-0.04" />
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="@string/subtitulo_horarios"
-                android:textColor="#6C757D"
+                android:textColor="@color/textSecondary"
                 android:textSize="15sp"
                 android:fontFamily="sans-serif-medium" />
 
@@ -63,7 +63,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/turnos_disponiveis"
                         android:fontFamily="sans-serif-black"
-                        android:textColor="#1A1C1E"
+                        android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
 
                     <!-- Time Slots Grid -->

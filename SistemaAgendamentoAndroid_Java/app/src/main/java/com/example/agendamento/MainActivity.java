@@ -1,14 +1,22 @@
 package com.example.agendamento;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import com.example.agendamento.ui.*;
-import com.google.android.material.navigationrail.NavigationRailView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private SharedPreferences prefs;
+
     @Override protected void onCreate(Bundle b) {
+        prefs = getSharedPreferences("CliniquePrefs", MODE_PRIVATE);
+        applyTheme();
+
         java.util.Locale locale = new java.util.Locale("pt", "BR");
         java.util.Locale.setDefault(locale);
         android.content.res.Configuration config = new android.content.res.Configuration();
@@ -18,9 +26,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(b);
         setContentView(R.layout.activity_main);
 
-        NavigationRailView navRail = findViewById(R.id.navigation_rail);
+        setupNavigation();
+        setupThemeToggle();
+    }
 
-        navRail.setOnItemSelectedListener(item -> {
+    private void applyTheme() {
+        boolean isDark = prefs.getBoolean("dark_mode", false);
+        if (isDark) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
+
+    private void setupNavigation() {
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.navInicio) abrir(new InicioFragment());
             else if (id == R.id.navAgenda) abrir(new ConsultasFragment());
@@ -29,11 +50,37 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        // Select first item by default
-        if (b == null) {
-            navRail.setSelectedItemId(R.id.navInicio);
+        if (getSupportFragmentManager().findFragmentById(R.id.container) == null) {
+            bottomNav.setSelectedItemId(R.id.navInicio);
             abrir(new InicioFragment());
         }
+    }
+
+    private void setupThemeToggle() {
+        View btnToggle = findViewById(R.id.btnThemeToggle);
+        View layoutDay = findViewById(R.id.layoutDay);
+        View layoutNight = findViewById(R.id.layoutNight);
+
+        boolean isDark = prefs.getBoolean("dark_mode", false);
+        if (isDark) {
+            layoutDay.setVisibility(View.GONE);
+            layoutNight.setVisibility(View.VISIBLE);
+        } else {
+            layoutDay.setVisibility(View.VISIBLE);
+            layoutNight.setVisibility(View.GONE);
+        }
+
+        btnToggle.setOnClickListener(v -> {
+            boolean currentMode = prefs.getBoolean("dark_mode", false);
+            prefs.edit().putBoolean("dark_mode", !currentMode).apply();
+            
+            // Re-aplicar o tema (isso reiniciará a activity)
+            if (!currentMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+        });
     }
 
     public void abrir(Fragment f) {

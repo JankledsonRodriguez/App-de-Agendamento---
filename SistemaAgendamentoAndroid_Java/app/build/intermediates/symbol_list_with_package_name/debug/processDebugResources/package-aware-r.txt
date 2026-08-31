@@ -1270,6 +1270,7 @@ color accent_material_dark
 color accent_material_light
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
+color backgroundColor
 color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
@@ -1330,6 +1331,7 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color dividerColor
 color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
@@ -2008,12 +2010,18 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color surfaceColor
 color switch_thumb_disabled_material_dark
 color switch_thumb_disabled_material_light
 color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color textPrimary
+color textSecondary
+color toggleBg
+color toggleCircle
+color toggleText
 color tooltip_background_dark
 color tooltip_background_light
 color white
@@ -2903,6 +2911,8 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable bg_icon_circle
 drawable bg_splash_gradient
+drawable bg_toggle_circle
+drawable bg_toggle_pill
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -2927,11 +2937,13 @@ drawable ic_call_decline
 drawable ic_call_decline_low
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
+drawable ic_doctor_profile
 drawable ic_home
 drawable ic_keyboard_black_24dp
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
+drawable ic_moon
 drawable ic_more
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
@@ -2939,6 +2951,7 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_people
 drawable ic_search_black_24
+drawable ic_sun
 drawable indeterminate_static
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3102,6 +3115,7 @@ id beginOnFirstDraw
 id beginning
 id blocking
 id bottom
+id bottom_navigation
 id bounce
 id btnAcoesMais
 id btnConfiguracoes
@@ -3124,6 +3138,7 @@ id btnSalvarCliente
 id btnSalvarNovaSenha
 id btnSalvarProfissional
 id btnServicos
+id btnThemeToggle
 id btnVerificarCodigo
 id buttonPanel
 id calendarCard
@@ -3277,6 +3292,7 @@ id ignore
 id ignoreRequest
 id image
 id imgIcone
+id imgPerfilMedico
 id indeterminate
 id info
 id invisible
@@ -3288,6 +3304,8 @@ id jumpToEnd
 id jumpToStart
 id labeled
 id layout
+id layoutDay
+id layoutNight
 id layoutStep1
 id layoutStep2
 id left
@@ -3368,7 +3386,6 @@ id navigation_bar_item_labels_group
 id navigation_bar_item_large_label_view
 id navigation_bar_item_small_label_view
 id navigation_header_container
-id navigation_rail
 id never
 id noScroll
 id none
@@ -3551,6 +3568,9 @@ id txtEspecialidadeAgenda
 id txtEsqueceuSenha
 id txtHoje
 id txtHoraAgenda
+id txtMedicoCRMItem
+id txtMedicoEspecialidadeItem
+id txtMedicoNomeItem
 id txtNomeEspecialidade
 id txtPacienteAgenda
 id txtPacienteInfoItem
@@ -3743,6 +3763,7 @@ layout item_agenda
 layout item_consulta
 layout item_date
 layout item_especialidade
+layout item_medico
 layout item_paciente
 layout m3_alert_dialog
 layout m3_alert_dialog_actions

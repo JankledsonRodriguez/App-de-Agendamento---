@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#3F51B5</color>
-    <color name="primary_dark">#303F9F</color>
+    <color name="backgroundColor">#F8F9FA</color>
+    <color name="dividerColor">#E9ECEF</color>
+    <color name="primary">#0061FF</color>
+    <color name="primary_dark">#0046CC</color>
+    <color name="surfaceColor">#FFFFFF</color>
+    <color name="textPrimary">#1A1C1E</color>
+    <color name="textSecondary">#6C757D</color>
+    <color name="toggleBg">#E9ECEF</color>
+    <color name="toggleCircle">#FFFFFF</color>
+    <color name="toggleText">#000000</color>
     <color name="white">#FFFFFF</color>
     <string name="acessando_prontuario">Acessando Prontuário…</string>
     <string name="acessar_sistema">ACESSAR SISTEMA</string>
@@ -111,8 +119,16 @@
     <string name="verificar_codigo">VERIFICAR CÓDIGO</string>
     <string name="voltar_login">Voltar para o Login</string>
     <style name="Theme.Agendamento" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:colorAccent">#FF4081</item>
+        
+        <item name="colorPrimary">@color/primary</item>
         <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:windowBackground">@color/backgroundColor</item>
+
+        
+        <item name="colorSurface">@color/surfaceColor</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 </resources>

@@ -1,7 +1,15 @@
 <resources>
     <style name="Theme.Agendamento" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:colorAccent">#FF4081</item>
+        <!-- Main Colors -->
+        <item name="colorPrimary">@color/primary</item>
         <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:windowBackground">@color/backgroundColor</item>
+
+        <!-- Material 3 Surface/Background mappings -->
+        <item name="colorSurface">@color/surfaceColor</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 </resources>

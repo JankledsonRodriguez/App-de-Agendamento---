@@ -1,102 +1,106 @@
 [
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/activity_cadastro_medico.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/activity_cadastro_medico.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\activity_splash.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\activity_splash.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/activity_splash.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/activity_splash.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_horarios.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_horarios.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_configuracoes.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_configuracoes.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_novo_medico.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_novo_medico.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/activity_reset_password.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/activity_reset_password.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\item_especialidade.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\item_especialidade.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_novo_medico.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_novo_medico.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_consultas.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_consultas.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/item_agenda.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/item_agenda.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_relatorios.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_relatorios.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_prontuario.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_prontuario.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_agenda_medica.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_agenda_medica.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/activity_main.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/activity_main.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_corpo_clinico.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_corpo_clinico.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/item_especialidade.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/item_especialidade.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_configuracoes.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_configuracoes.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_novo_paciente.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_novo_paciente.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\activity_reset_password.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\activity_reset_password.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/item_paciente.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/item_paciente.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_menu.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_menu.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_horarios.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_horarios.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_prontuario.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_prontuario.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/item_consulta.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/item_consulta.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\item_consulta.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\item_consulta.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_corpo_clinico.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_corpo_clinico.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\item_agenda.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\item_agenda.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_nova_consulta.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_nova_consulta.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\activity_cadastro_medico.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\activity_cadastro_medico.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_inicio.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_inicio.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\activity_forgot_password.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\activity_forgot_password.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/activity_login.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/activity_login.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_nova_consulta.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_nova_consulta.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/item_date.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/item_date.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\item_paciente.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\item_paciente.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/activity_forgot_password.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/activity_forgot_password.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_novo_paciente.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_novo_paciente.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_consultas.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_consultas.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\item_date.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\item_date.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_relatorios.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_relatorios.xml"
+        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/item_medico.xml",
+        "source": "com.example.agendamento.app-main-35:/layout/item_medico.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_menu.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_menu.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\activity_login.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\activity_login.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_pacientes.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_pacientes.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_especialidades.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_especialidades.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_especialidades.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_especialidades.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.example.agendamento.app-mergeDebugResources-32:/layout/fragment_agenda_medica.xml",
-        "source": "com.example.agendamento.app-main-35:/layout/fragment_agenda_medica.xml"
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_pacientes.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_pacientes.xml"
+    },
+    {
+        "merged": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-mergeDebugResources-32:\\layout\\fragment_inicio.xml",
+        "source": "C:\\Users\\jankledson59266826\\.gradle\\daemon\\9.3.0\\com.example.agendamento.app-main-35:\\layout\\fragment_inicio.xml"
     }
 ]

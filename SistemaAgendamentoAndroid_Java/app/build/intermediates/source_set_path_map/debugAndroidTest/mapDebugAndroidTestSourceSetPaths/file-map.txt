@@ -1,0 +1,4 @@
+com.example.agendamento.test.app-androidTest-0 C:\Users\jankledson59266826\AndroidStudioProjects\App-de-Agendamento---\SistemaAgendamentoAndroid_Java\app\build\generated\res\resValues\androidTest\debug
+com.example.agendamento.test.app-mergeDebugAndroidTestResources-1 C:\Users\jankledson59266826\AndroidStudioProjects\App-de-Agendamento---\SistemaAgendamentoAndroid_Java\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.agendamento.test.app-mergeDebugAndroidTestResources-2 C:\Users\jankledson59266826\AndroidStudioProjects\App-de-Agendamento---\SistemaAgendamentoAndroid_Java\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.agendamento.test.app-debugAndroidTest-3 C:\Users\jankledson59266826\AndroidStudioProjects\App-de-Agendamento---\SistemaAgendamentoAndroid_Java\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

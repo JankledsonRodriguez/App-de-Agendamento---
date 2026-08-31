@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FA">
+    android:background="@color/backgroundColor">
 
     <LinearLayout
         android:id="@+id/headerContainer"
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nav_especialidades"
-            android:textColor="#1A1C1E"
+            android:textColor="@color/textPrimary"
             android:textSize="34sp"
             android:fontFamily="sans-serif-black"
             android:letterSpacing="-0.04" />
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/subtitulo_horarios"
-            android:textColor="#6C757D"
+            android:textColor="@color/textSecondary"
             android:textSize="15sp"
             android:layout_marginTop="8dp"
             android:lineSpacingExtra="4dp"

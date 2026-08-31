@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#3D8BFF</color>
+    <color name="primary_dark">#0061FF</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Semantic Colors -->
+    <color name="backgroundColor">#121212</color>
+    <color name="surfaceColor">#1E1E1E</color>
+    <color name="textPrimary">#E1E2E4</color>
+    <color name="textSecondary">#ADB5BD</color>
+    <color name="dividerColor">#2C2C2C</color>
+
+    <!-- Toggle Colors -->
+    <color name="toggleBg">#000000</color>
+    <color name="toggleCircle">#FFFFFF</color>
+    <color name="toggleText">#FFFFFF</color>
+</resources>

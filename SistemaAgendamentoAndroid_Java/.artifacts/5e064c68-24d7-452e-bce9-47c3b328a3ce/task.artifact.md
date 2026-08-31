@@ -1,4 +1,6 @@
-- [x] Modificar `listarEspecialidades` em `ClinicaRepository.java` para consultar o banco (SELECT DISTINCT)
-- [x] Atualizar `EspecialidadesFragment.java` para carregar dados assincronamente
-- [x] Validar criação automática de cards ao adicionar novo médico
-- [x] Gerar Walkthrough final
+# Tarefas: Layout em Grade para Corpo Clínico
+
+- [x] Criar layout de item `item_medico.xml`
+- [x] Implementar `MedicoAdapter.java`
+- [x] Atualizar `CorpoClinicoFragment.java` (GridLayoutManager e novo Adapter)
+- [x] Validar visualização e gerar Walkthrough

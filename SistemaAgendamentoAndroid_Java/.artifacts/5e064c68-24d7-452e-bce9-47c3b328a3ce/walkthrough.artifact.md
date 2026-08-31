@@ -1,30 +1,28 @@
-# Walkthrough - Correção de Especialidades e Banco de Dados
+# Walkthrough - Padronização do Corpo Clínico em Grade
 
-Corrigimos o erro de carregamento das especialidades e garantimos que a vitrine seja totalmente sincronizada com o seu corpo clínico em tempo real.
+Concluímos a padronização visual da tela de "Corpo Clínico", que agora utiliza o layout de grade de duas colunas, mantendo a consistência com as abas de Pacientes e Consultas.
 
-## O que foi corrigido
+## O que foi alterado
 
-### 1. Erro "Table doesn't exist"
-- **O Problema:** O aplicativo tentava buscar informações em uma tabela chamada `especialidades` dentro do banco `clinica_medica`, mas essa tabela ou banco não existiam conforme configurado.
-- **A Solução:**
-    1. Atualizamos o `DatabaseConfig.java` para conectar ao banco `agendamento`, que é o nome definido no seu script SQL oficial.
-    2. Simplificamos a busca no `ClinicaRepository.java`. Agora, o app busca as especialidades diretamente da tabela de médicos.
+### 1. Novo Design de Card Médico
+- **item_medico.xml:** Criamos um layout de card exclusivo para os profissionais.
+- **Identidade Visual:** Incluímos um ícone de perfil médico em destaque no topo, com o nome do médico em negrito e as informações de Especialidade e CRM organizadas logo abaixo.
+- **Material 3:** O card utiliza cantos arredondados e cores semânticas que se adaptam automaticamente ao Modo Escuro/Claro.
 
-### 2. Vitrine 100% Dinâmica e Reativa
-- Agora, as especialidades aparecem na tela **automaticamente** assim que você cadastra um médico.
-- **Exemplo:** Se você cadastrar um médico novo em "Neurologia", o card de "Neurologia" aparecerá na vitrine instantaneamente, sem erros.
-- Se você clicar no card, ele abrirá a lista apenas com os médicos que pertencem àquela área.
+### 2. Estrutura em Grade (Grid)
+- **GridLayoutManager:** Atualizamos o `CorpoClinicoFragment.java` para organizar os médicos em 2 colunas horizontais que seguem verticalmente.
+- **MedicoAdapter:** Implementamos um novo adaptador inteligente para gerenciar os dados dos médicos, substituindo o adaptador de texto simples anterior.
 
-### 3. Inteligência de Ícones
-- O sistema continua identificando palavras-chave para colocar o ícone correto (Coração para Cardiologia, Câmera/Pele para Dermatologia, etc.), mesmo para especialidades criadas na hora.
+### 3. Sincronização de Dados
+- A grade agora carrega os objetos `Medico` completos do banco de dados, garantindo que as informações de CRM e Especialidade sejam exibidas corretamente em cada card.
 
-## Como Testar
-1. Acesse a aba **Especialidades**. O erro deve ter sumido e os cards devem aparecer.
-2. Cadastre um **Novo Médico** com uma área que ainda não existe (ex: "Psiquiatria").
-3. Volte em **Especialidades** e veja o card de "Psiquiatria" criado automaticamente pelo sistema.
+## Como Visualizar
+1. Acesse o Menu e clique em **Corpo Clínico**.
+2. Note que os médicos agora aparecem em pares, lado a lado.
+3. Se você usar o filtro de **Especialidades**, a visualização em grade será mantida apenas para os especialistas daquela área.
 
 > [!SUCCESS]
-> **Build Status:** Green. A conexão com o banco de dados foi sincronizada e a lógica de especialidades agora é à prova de falhas.
+> **Build Status:** Green. O aplicativo agora possui uma linguagem visual 100% consistente em todos os seus módulos principais.
 
-> [!IMPORTANT]
-> Certifique-se de que o seu MySQL no XAMPP está rodando e que você importou o arquivo `sql/agendamento.sql`.
+> [!TIP]
+> O formato em grade facilita a comparação visual entre os especialistas disponíveis na clínica.

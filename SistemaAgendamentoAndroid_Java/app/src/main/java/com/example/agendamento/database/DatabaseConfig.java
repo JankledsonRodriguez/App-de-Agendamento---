@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class DatabaseConfig {
 
     // Conexão do Banco
-    public static final String URL = "jdbc:mysql://10.15.108.21:3307/agendamento?useSSL=false&allowPublicKeyRetrieval=true";
+    public static final String URL = "jdbc:mysql://10.15.108.21:3307/clinica_medica";
     public static final String USUARIO = "senac"; // super usuário do banco de dados
     public static final String SENHA = "123";
 

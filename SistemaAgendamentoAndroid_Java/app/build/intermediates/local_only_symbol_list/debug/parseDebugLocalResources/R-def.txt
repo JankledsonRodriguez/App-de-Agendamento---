@@ -1,15 +1,29 @@
 R_DEF: Internal format may change without notice
 local
+color backgroundColor
+color dividerColor
 color primary
 color primary_dark
+color surfaceColor
+color textPrimary
+color textSecondary
+color toggleBg
+color toggleCircle
+color toggleText
 color white
 drawable bg_icon_circle
 drawable bg_splash_gradient
+drawable bg_toggle_circle
+drawable bg_toggle_pill
 drawable ic_calendar
 drawable ic_calendar_schedule
+drawable ic_doctor_profile
 drawable ic_home
+drawable ic_moon
 drawable ic_more
 drawable ic_people
+drawable ic_sun
+id bottom_navigation
 id btnAcoesMais
 id btnConfiguracoes
 id btnConfirmarHorario
@@ -31,6 +45,7 @@ id btnSalvarCliente
 id btnSalvarNovaSenha
 id btnSalvarProfissional
 id btnServicos
+id btnThemeToggle
 id btnVerificarCodigo
 id calendarCard
 id calendarView
@@ -78,13 +93,15 @@ id etSearch
 id fabFiltros
 id headerContainer
 id imgIcone
+id imgPerfilMedico
+id layoutDay
+id layoutNight
 id layoutStep1
 id layoutStep2
 id navAgenda
 id navClientes
 id navInicio
 id navMenu
-id navigation_rail
 id recyclerAgenda
 id recyclerAgendamentos
 id recyclerHistorico
@@ -109,6 +126,9 @@ id txtEspecialidadeAgenda
 id txtEsqueceuSenha
 id txtHoje
 id txtHoraAgenda
+id txtMedicoCRMItem
+id txtMedicoEspecialidadeItem
+id txtMedicoNomeItem
 id txtNomeEspecialidade
 id txtPacienteAgenda
 id txtPacienteInfoItem
@@ -152,6 +172,7 @@ layout item_agenda
 layout item_consulta
 layout item_date
 layout item_especialidade
+layout item_medico
 layout item_paciente
 menu nav_rail_menu
 string acessando_prontuario

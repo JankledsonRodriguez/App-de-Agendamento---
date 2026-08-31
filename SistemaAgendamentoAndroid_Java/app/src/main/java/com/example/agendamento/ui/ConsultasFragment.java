@@ -6,7 +6,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.agendamento.MainActivity;
 import com.example.agendamento.R;
@@ -23,7 +23,7 @@ public class ConsultasFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View v, @Nullable Bundle b) {
         recycler = v.findViewById(R.id.recyclerAgendamentos);
-        recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recycler.setLayoutManager(new GridLayoutManager(requireContext(), 2));
         
         v.findViewById(R.id.btnNovoAgendamento).setOnClickListener(x -> 
             ((MainActivity)requireActivity()).abrir(new NovaConsultaFragment())
